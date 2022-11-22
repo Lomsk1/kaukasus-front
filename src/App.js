@@ -1,4 +1,4 @@
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useLocation } from "react-router-dom";
 
 import "./App.module.css";
 import Login from "./Pages/Login";
@@ -28,30 +28,37 @@ import AdminAboutCountry from "./Pages/Admin/About_Country";
 import AboutEachCountry from "./Pages/AboutEachCountry";
 import AdminSingleRooms from "./Pages/Admin/singleRooms";
 import AdminGallery from "./Pages/Admin/gallery";
+import { useEffect } from "react";
+import SiteServices from "./Pages/Services";
 
 function App() {
+  const { pathname } = useLocation();
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
   return (
     <>
       <Routes>
-        <Route path='/*' element={<Home />} />
-        <Route path='/about' element={<About />} />
-        <Route path='/Georgia' element={<Georgia />} />
-        <Route path='/Armenia' element={<Armenia />} />
-        <Route path='/Azerbaijan' element={<Azerbaijan />} />
-        <Route exact path='/tour/:id' element={<EachTour />} />
-        <Route path='/tours' element={<Tours />} />
-        <Route path='/contact' element={<Contact />} />
-        <Route path='/photo_blog' element={<PhotoBlog />} />
-        <Route path='/photo_blog/:id' element={<Photos />} />
-        <Route path='/booking/:id' element={<BookingPage />} />
-        <Route path='/about_countries' element={<AboutCountries />} />
-        <Route path='/country_about/:id' element={<AboutEachCountry />} />
-        <Route path='/term' element={<Term />} />
+        <Route path="/*" element={<Home />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/Georgia" element={<Georgia />} />
+        <Route path="/Armenia" element={<Armenia />} />
+        <Route path="/Azerbaijan" element={<Azerbaijan />} />
+        <Route exact path="/tour/:id" element={<EachTour />} />
+        <Route path="/tours" element={<Tours />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="/photo_blog" element={<PhotoBlog />} />
+        <Route path="/photo_blog/:id" element={<Photos />} />
+        <Route path="/booking/:id" element={<BookingPage />} />
+        <Route path="/about_countries" element={<AboutCountries />} />
+        <Route path="/country_about/:id" element={<AboutEachCountry />} />
+        <Route path="/term" element={<Term />} />
+        <Route path="/servicess" element={<SiteServices />} />
 
-        <Route exact path='/login' element={<Login />} />
+        <Route exact path="/login" element={<Login />} />
         <Route
           exact
-          path='/admin/'
+          path="/admin/"
           element={
             <PrivateRoute>
               <Admin />
@@ -60,7 +67,7 @@ function App() {
         />
         <Route
           exact
-          path='/admin/members'
+          path="/admin/members"
           element={
             <PrivateRoute>
               <AdminMember />
@@ -69,7 +76,7 @@ function App() {
         />
         <Route
           exact
-          path='/admin/tours'
+          path="/admin/tours"
           element={
             <PrivateRoute>
               <AdminTour />
@@ -78,7 +85,7 @@ function App() {
         />
         <Route
           exact
-          path='/admin/photo_blog'
+          path="/admin/photo_blog"
           element={
             <PrivateRoute>
               <AdminGallery />
@@ -87,7 +94,7 @@ function App() {
         />
         <Route
           exact
-          path='/admin/highlight'
+          path="/admin/highlight"
           element={
             <PrivateRoute>
               <AdminHighlights />
@@ -96,7 +103,7 @@ function App() {
         />
         <Route
           exact
-          path='/admin/tour_day'
+          path="/admin/tour_day"
           element={
             <PrivateRoute>
               <AdminTourDay />
@@ -105,7 +112,7 @@ function App() {
         />
         <Route
           exact
-          path='/admin/tag'
+          path="/admin/tag"
           element={
             <PrivateRoute>
               <AdminTag />
@@ -114,7 +121,7 @@ function App() {
         />
         <Route
           exact
-          path='/admin/comment'
+          path="/admin/comment"
           element={
             <PrivateRoute>
               <CommentAdmin />
@@ -123,7 +130,7 @@ function App() {
         />
         <Route
           exact
-          path='/admin/term'
+          path="/admin/term"
           element={
             <PrivateRoute>
               <AdminAGBTerms />
@@ -132,7 +139,7 @@ function App() {
         />
         <Route
           exact
-          path='/admin/country_about'
+          path="/admin/country_about"
           element={
             <PrivateRoute>
               <AdminAboutCountry />
@@ -141,7 +148,7 @@ function App() {
         />
         <Route
           exact
-          path='/admin/single_room'
+          path="/admin/single_room"
           element={
             <PrivateRoute>
               <AdminSingleRooms />

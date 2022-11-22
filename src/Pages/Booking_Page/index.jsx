@@ -23,37 +23,65 @@ function BookingPage() {
   const [tourID, setTourID] = useState(null);
   const [time, setTime] = useState(false);
 
-  const { tourData, isLoading } = useSelector(state => state.tour);
+  const { tourData, isLoading } = useSelector((state) => state.tour);
 
   useEffect(() => {
-    dispatch(
-      getTourById({
-        id: tourID,
-      })
-    );
+    let isApiSubscribed = true;
+    if (isApiSubscribed) {
+      dispatch(
+        getTourById({
+          id: tourID,
+        })
+      );
+    }
+    return () => {
+      isApiSubscribed = false;
+    };
   }, [dispatch, tourID]);
 
   useEffect(() => {
-    fetch(`${process.env.REACT_APP_BASE_URL}/booking/${id}/`)
-      .then(response => response.json())
-      .then(data => setBookingData(data));
+    let isApiSubscribed = true;
+    if (isApiSubscribed) {
+      fetch(`${process.env.REACT_APP_BASE_URL}/booking/${id}/`)
+        .then((response) => response.json())
+        .then((data) => setBookingData(data));
+    }
+    return () => {
+      isApiSubscribed = false;
+    };
   }, [id]);
 
   useEffect(() => {
-    fetch(`${process.env.REACT_APP_BASE_URL}/single_room/`)
-      .then(response => response.json())
-      .then(data => setSingleRoomDaa(data));
-  }, []);
-
-  useEffect(() => {
-    setTourID(BookingData.tour);
+    let isApiSubscribed = true;
+    if (isApiSubscribed) {
+      setSingleRoomDaa(BookingData.single_room);
+    }
+    return () => {
+      isApiSubscribed = false;
+    };
   }, [BookingData]);
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setTime(true);
-    }, 2500);
-    return () => clearTimeout(timer);
+    let isApiSubscribed = true;
+    if (isApiSubscribed) {
+      setTourID(BookingData.tour);
+    }
+    return () => {
+      isApiSubscribed = false;
+    };
+  }, [BookingData]);
+
+  useEffect(() => {
+    let isApiSubscribed = true;
+    if (isApiSubscribed) {
+      const timer = setTimeout(() => {
+        setTime(true);
+      }, 2500);
+      return () => clearTimeout(timer);
+    }
+    return () => {
+      isApiSubscribed = false;
+    };
   }, []);
 
   const formik = useFormik({
@@ -79,10 +107,10 @@ function BookingPage() {
           "N8cGP1mMl7m41xPY4"
         )
         .then(
-          result => {
+          (result) => {
             alert("SUCCESS!", result.text);
           },
-          error => {
+          (error) => {
             alert("FAILED...", error);
           }
         );
@@ -113,14 +141,14 @@ function BookingPage() {
     <Fragment>
       <Sidebar isOpen={isOpen} toggle={toggle} />
       <Navbar toggle={toggle} />
-      <HeaderImg description={"Booking"} />
+      {/* <HeaderImg description={"Booking"} /> */}
       <MainSection>
         <LeftSide>
           <TitleDiv>
             <h2>Buchungs Formular</h2>
           </TitleDiv>
           <FormsDiv>
-            <form id='' onSubmit={formik.handleSubmit}>
+            <form id="" onSubmit={formik.handleSubmit}>
               <FormUpper>
                 <Input
                   placeholder={"Vorname"}
@@ -165,9 +193,9 @@ function BookingPage() {
                   onBlur={formik.handleBlur}
                 />
 
-                {tourData.Tour && (
+                {tourData.Tour && time ? (
                   <>
-                    <label className='lab' htmlFor='tour'>
+                    <label className="lab" htmlFor="tour">
                       tour: {tourData.Tour.title}
                     </label>
                     <Input
@@ -180,11 +208,13 @@ function BookingPage() {
                       value={tourData.Tour.title}
                     />
                   </>
+                ) : (
+                  <div>Loading...</div>
                 )}
 
-                {BookingData && (
+                {BookingData && time ? (
                   <>
-                    <label className='lab' htmlFor='travelDate'>
+                    <label className="lab" htmlFor="travelDate">
                       Reisetermine:{" "}
                       {`${BookingData.startDate} -- ${BookingData.endDate}`}
                     </label>
@@ -198,24 +228,26 @@ function BookingPage() {
                       value={`${BookingData.startDate} --- ${BookingData.endDate}`}
                     />
                   </>
+                ) : (
+                  <div>Loading ...</div>
                 )}
 
                 <textarea
-                  placeholder='z.B. ich bin Vegetarianer(in),ich trinke keinen Alkohol, etc.'
+                  placeholder="z.B. ich bin Vegetarianer(in),ich trinke keinen Alkohol, etc."
                   name={"otherInformation"}
                   value={formik.values.otherInformation}
                   onChange={formik.handleChange}
                   onBlur={formik.handleBlur}
                 />
 
-                <label htmlFor='participants'>Anzahl Reseiteilnehmer</label>
+                <label htmlFor="participants">Anzahl Reseiteilnehmer</label>
 
                 <Input
                   value={formik.values.participants}
                   type={"number"}
                   placeholder={"Anzahl Reseiteilnehmer"}
-                  name='participants'
-                  id='participants'
+                  name="participants"
+                  id="participants"
                   onChange={formik.handleChange}
                   onBlur={formik.handleBlur}
                 />
@@ -232,8 +264,13 @@ function BookingPage() {
                 <fieldset>
                   <legend>Important Information:</legend>
 
-                  {singleRoomData && singleRoomData.length > 0 && (
-                    <p>{singleRoomData[0].description}</p>
+                  {singleRoomData && time ? (
+                    <>
+                      <p>{singleRoomData.description}</p>
+                      <p>{singleRoomData.price}</p>
+                    </>
+                  ) : (
+                    <div>Loading...</div>
                   )}
 
                   <h3>
@@ -248,13 +285,13 @@ function BookingPage() {
                   <Input
                     name={"terms"}
                     type={"checkBox"}
-                    onChange={e => setAgree(e.target.checked)}
+                    onChange={(e) => setAgree(e.target.checked)}
                   />
-                  <label htmlFor='terms'>
+                  <label htmlFor="terms">
                     <Link to={"/term"}>Agree to Terms and Conditions</Link>
                   </label>
                 </div>
-                {agree ? (
+                {agree && time ? (
                   <Button type={"submit"}>Submit</Button>
                 ) : (
                   <MainButton type={"submit"}>Not Allowed</MainButton>
@@ -269,14 +306,16 @@ function BookingPage() {
             <p>Das haben Sie ausgesucht: ↴</p>
           </TitleDiv>
 
-          {BookingData && (
+          {BookingData && time ? (
             <FormsDiv key={BookingData.id}>
-              {!isLoading && tourData && time && (
+              {tourData.Tour && time ? (
                 <p>
                   Teilnehmeranzahl :{" "}
                   <span>{tourData.Tour.maxParticipants}</span> -{" "}
                   <span>{tourData.Tour.minParticipants}</span>
                 </p>
+              ) : (
+                <div>Loading...</div>
               )}
               <p>
                 Termin: <span>{BookingData.startDate}</span> ----
@@ -286,6 +325,8 @@ function BookingPage() {
                 Preis: EUR <span>{BookingData.price}</span>
               </p>
             </FormsDiv>
+          ) : (
+            <div>Loading...</div>
           )}
         </RightSide>
       </MainSection>
@@ -303,6 +344,7 @@ const MainSection = styled.section`
   max-height: min-content;
   background-color: #cfeaf6;
   display: flex;
+  margin-top: 3em;
   @media (max-width: 1185px) {
     flex-direction: column-reverse;
     align-items: center;
@@ -424,11 +466,14 @@ const FormDown = styled.div`
   }
   label {
     margin-left: 2.5em;
-    transform: translateY(1.7em);
+    transform: translateY(1.5em);
     color: brown;
     &:last-child {
       margin: 0;
       transform: translate(1em, 0);
+    }
+    @media (max-width: 385px){
+      font-size: 0.85rem;
     }
   }
   textarea {
@@ -492,7 +537,7 @@ const MainButton = styled.button`
   background-color: #808080;
   border: 1px solid black;
   border-radius: 10px;
-  margin: ${props => props.margin};
+  margin: ${(props) => props.margin};
   cursor: not-allowed;
   pointer-events: none;
 `;

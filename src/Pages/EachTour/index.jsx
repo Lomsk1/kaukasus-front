@@ -19,7 +19,7 @@ function EachTour() {
   const { id } = useParams();
   const dispatch = useDispatch();
 
-  const { tourData, isLoading } = useSelector(state => state.tour);
+  const { tourData, isLoading } = useSelector((state) => state.tour);
   const [eachDay, setEachDay] = useState([]);
   const [filter, setFilter] = useState([]);
   const [BookingData, setBookingData] = useState([]);
@@ -27,50 +27,103 @@ function EachTour() {
   const [serviceData, setServiceData] = useState([]);
   const [highlightData, setHighlightData] = useState([]);
   const [time, setTime] = useState(false);
+  // const [bgIMG, setBgImg] = useState({});
 
   useEffect(() => {
-    dispatch(
-      getTourById({
-        id: id,
-      })
-    );
+    let isApiSubscribed = true;
+    if (isApiSubscribed) {
+      console.log(tourData)
+    }
+    return () => {
+      isApiSubscribed = false;
+    };
+  }, [tourData]);
+
+  useEffect(() => {
+    let isApiSubscribed = true;
+    if (isApiSubscribed) {
+      dispatch(
+        getTourById({
+          id: id,
+        })
+      );
+    }
+    return () => {
+      isApiSubscribed = false;
+    };
   }, [dispatch, id]);
 
   useEffect(() => {
-    fetch(`${process.env.REACT_APP_BASE_URL}/services/all/`)
-      .then(response => response.json())
-      .then(data =>
-        setServiceData(data.filter(data => data.tour === parseInt(id)))
-      );
+    let isApiSubscribed = true;
+    if (isApiSubscribed) {
+      fetch(`${process.env.REACT_APP_BASE_URL}/services/all/`)
+        .then((response) => response.json())
+        .then((data) =>
+          setServiceData(data.filter((data) => data.tour === parseInt(id)))
+        );
+    }
+    return () => {
+      isApiSubscribed = false;
+    };
   }, [id]);
 
   useEffect(() => {
-    fetch(`${process.env.REACT_APP_BASE_URL}/booking/all/`)
-      .then(response => response.json())
-      .then(data => setBookingData(data));
+    let isApiSubscribed = true;
+    if (isApiSubscribed) {
+      fetch(`${process.env.REACT_APP_BASE_URL}/booking/all/`)
+        .then((response) => response.json())
+        .then((data) => setBookingData(data));
+    }
+    return () => {
+      isApiSubscribed = false;
+    };
   }, []);
 
   useEffect(() => {
-    fetch(`${process.env.REACT_APP_BASE_URL}/highlights/all/${id}/`)
-      .then(response => response.json())
-      .then(data => setHighlightData(data));
+    let isApiSubscribed = true;
+    if (isApiSubscribed) {
+      fetch(`${process.env.REACT_APP_BASE_URL}/highlights/all/${id}/`)
+        .then((response) => response.json())
+        .then((data) => setHighlightData(data));
+    }
+    return () => {
+      isApiSubscribed = false;
+    };
   }, [id]);
 
   useEffect(() => {
-    fetch(`${process.env.REACT_APP_BASE_URL}/tour_days/all/${id}/`)
-      .then(res => res.json())
-      .then(data => setEachDay(data))
-      .catch(err => console.error(err));
+    let isApiSubscribed = true;
+    if (isApiSubscribed) {
+      fetch(`${process.env.REACT_APP_BASE_URL}/tour_days/all/${id}/`)
+        .then((res) => res.json())
+        .then((data) => setEachDay(data))
+        .catch((err) => console.error(err));
+    }
+    return () => {
+      isApiSubscribed = false;
+    };
   }, [id]);
 
   useEffect(() => {
-    fetch(`${process.env.REACT_APP_BASE_URL}/comments/get/tour/${id}`)
-      .then(response => response.json())
-      .then(data => setCommentData(data));
+    let isApiSubscribed = true;
+    if (isApiSubscribed) {
+      fetch(`${process.env.REACT_APP_BASE_URL}/comments/get/tour/${id}`)
+        .then((response) => response.json())
+        .then((data) => setCommentData(data));
+    }
+    return () => {
+      isApiSubscribed = false;
+    };
   }, [id]);
 
   useEffect(() => {
-    setFilter(BookingData.filter(data => data.tour === parseInt(id)));
+    let isApiSubscribed = true;
+    if (isApiSubscribed) {
+      setFilter(BookingData.filter((data) => data.tour === parseInt(id)));
+    }
+    return () => {
+      isApiSubscribed = false;
+    };
   }, [BookingData, id]);
 
   const [isOpen, setIsOpen] = useState(false);
@@ -90,7 +143,14 @@ function EachTour() {
     <Fragment>
       <Sidebar isOpen={isOpen} toggle={toggle} />
       <Navbar toggle={toggle} />
-      <HeaderImg description={"Tour name"} />
+      {!isLoading && tourData && time ? (
+        <HeaderImg
+          description={tourData.Tour.title}
+          img={tourData.Tour.image}
+        />
+      ) : (
+        <div>Loading...</div>
+      )}
       <SidebarFor aboutCountry={"Georgia"} />
       <MainSection>
         <TourSection>
@@ -121,7 +181,7 @@ function EachTour() {
                 offset={10}
                 duration={500}
               >
-                Termine/Preis/Buchung
+                Preis/Termine/Buchen
               </Links>
               <Links
                 to={"services"}
@@ -145,7 +205,7 @@ function EachTour() {
 
             <Element name={"overview"} />
 
-            {!isLoading && tourData && time && (
+            {!isLoading && tourData && time ? (
               <InformationTour
                 timeDuration={tourData.Tour.duration}
                 execution={tourData.Tour.execution}
@@ -153,8 +213,14 @@ function EachTour() {
                 min_participants={tourData.Tour.minParticipants}
                 max_participants={tourData.Tour.maxParticipants}
               />
+            ) : (
+              <div>Loading...</div>
             )}
           </BothDiv>
+
+          <Itinerary>
+            <h2>Übersicht</h2>
+          </Itinerary>
 
           <InformationAboutCountry>
             {tourData && !isLoading && time && (
@@ -164,7 +230,7 @@ function EachTour() {
             <ul>
               {highlightData &&
                 time &&
-                highlightData.map(highlight => (
+                highlightData.map((highlight) => (
                   <li key={highlight.id}>{highlight.highlight}</li>
                 ))}
             </ul>
@@ -218,23 +284,27 @@ function EachTour() {
 
           <Element name={"comments"} />
 
-          <Itinerary>
-            <h2>Was unsere Gäste über uns sagen</h2>
-          </Itinerary>
-
-          {commentData &&
-            commentData.map(comment => (
-              <CommentMainSection key={comment.id}>
-                <div className='up'>
-                  <h3>
-                    {comment.first_name} {comment.last_name}
-                  </h3>
-                </div>
-                <div className='down'>
-                  <p>{comment.body}</p>
-                </div>
-              </CommentMainSection>
-            ))}
+          {commentData ? (
+            commentData.map((comment) => (
+              <>
+                <Itinerary>
+                  <h2>Was unsere Gäste über uns sagen</h2>
+                </Itinerary>
+                <CommentMainSection key={comment.id}>
+                  <div className="up">
+                    <h3>
+                      {comment.first_name} {comment.last_name}
+                    </h3>
+                  </div>
+                  <div className="down">
+                    <p>{comment.body}</p>
+                  </div>
+                </CommentMainSection>
+              </>
+            ))
+          ) : (
+            <div>Loading...</div>
+          )}
         </TourSection>
       </MainSection>
 
@@ -268,6 +338,7 @@ const UpperInformations = styled.div`
   width: 100%;
   height: 5rem;
   display: flex;
+
   @media (max-width: 770px) {
     flex-direction: column;
     height: 15rem;
@@ -299,9 +370,8 @@ const UpperInformations = styled.div`
       font-size: 1.1rem;
     }
     @media (max-width: 445px) {
-    font-size: 0.8rem;
-  }
-
+      font-size: 0.8rem;
+    }
 
     &:hover {
       color: green;
@@ -315,6 +385,8 @@ const BothDiv = styled.div`
   height: 10rem;
   display: flex;
   flex-direction: column;
+  /* position: sticky;
+  top: 50px; */
   @media (max-width: 770px) {
     flex-direction: row;
     height: 15rem;
@@ -328,6 +400,9 @@ const InformationAboutCountry = styled.section`
     font-size: 1.4rem;
     text-align: justify;
     font-weight: 500;
+    @media (max-width: 1400px){
+      font-size: 1.2rem;
+    }
   }
   span {
     font-size: 2rem;
@@ -338,11 +413,14 @@ const Itinerary = styled.section`
   width: 100%;
   min-height: 2rem;
   height: min-content;
-  color: blueviolet;
-  border-bottom: 2px solid blueviolet;
+  color: #14213d;
+  border-bottom: 2px solid #14213d;
   margin-top: 2em;
   h2 {
     margin: 0;
+    @media (max-width: 1400px){
+      font-size: 1.5rem;
+    }
   }
 `;
 const TableDiv = styled.div`
@@ -368,13 +446,19 @@ const Achivements = styled.div`
   h2 {
     font-size: 2rem;
     margin: 0;
-    color: blueviolet;
-    border-bottom: 2px solid blueviolet;
+    color: #14213d;
+    border-bottom: 2px solid #14213d;
     width: 47%;
+    @media (max-width: 1400px){
+      font-size: 1.5rem;
+    }
   }
   p {
     font-size: 1.2rem;
     font-weight: 600;
+    @media (max-width: 1400px){
+      font-size: 1rem;
+    }
   }
   &:last-child {
     p {
@@ -396,6 +480,9 @@ const CommentMainSection = styled.section`
       margin: 0;
       font-weight: 700;
       font-size: 1.79rem;
+      @media (max-width: 1400px){
+      font-size: 1.32rem;
+    }
     }
   }
   .down {
@@ -405,6 +492,9 @@ const CommentMainSection = styled.section`
       margin: 0;
       font-size: 1.2rem;
       text-align: justify;
+      @media (max-width: 1400px){
+      font-size: 1rem;
+    }
     }
   }
 `;

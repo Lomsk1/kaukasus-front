@@ -5,12 +5,14 @@ import emailjs from "@emailjs/browser";
 import * as yup from "yup";
 
 import Button from "../../Components/Button/Button";
-import HeaderImg from "../../Components/Header/Header";
 import Input from "../../Components/Input/input";
 import Navbar from "../../Components/Navbar/Navbar";
 import Sidebar from "../../Components/Sidebar/Sidebar";
 import { useState } from "react";
 import Footer from "../../Components/Footer";
+
+import HeaderImgStatic from "../../Components/Header/HeaderVol2";
+import headerImage from "../../assets/images/Kontakt.jpg";
 
 const contactValidationSchema = yup.object().shape({
   firstName: yup
@@ -45,10 +47,10 @@ function Contact() {
           "N8cGP1mMl7m41xPY4"
         )
         .then(
-          result => {
+          (result) => {
             alert("SUCCESS!", result.text);
           },
-          error => {
+          (error) => {
             alert("FAILED...", error);
           }
         );
@@ -66,56 +68,65 @@ function Contact() {
     <Fragment>
       <Sidebar isOpen={isOpen} toggle={toggle} />
       <Navbar toggle={toggle} />
-      <HeaderImg description={"Contact"} />
+      <HeaderImgStatic description={"KONTAKT"} image={headerImage} />
       <MainSection>
         <LeftDiv>
           <UpperLeftDiv>
             <h1>Nachricht Senden</h1>
           </UpperLeftDiv>
           <DownLeftDiv>
-            <form id='contact-form' onSubmit={formik.handleSubmit}>
-              <Input
-                placeholder={"Vorname"}
-                name={"firstName"}
-                type={"text"}
-                value={formik.values.firstName}
-                onChange={formik.handleChange}
-                onBlur={formik.handleBlur}
-              />
-              <Input
-                placeholder={"Nachname"}
-                name={"lastName"}
-                type={"text"}
-                value={formik.values.lastName}
-                onChange={formik.handleChange}
-                onBlur={formik.handleBlur}
-              />
-              <Input
-                placeholder={"E-mail"}
-                name={"email"}
-                type={"email"}
-                value={formik.values.email}
-                onChange={formik.handleChange}
-                onBlur={formik.handleBlur}
-              />
-              <Input
-                placeholder={"Telefonnummer"}
-                name={"number"}
-                type={"number"}
-                value={formik.values.number}
-                onChange={formik.handleChange}
-                onBlur={formik.handleBlur}
-              />
-              <Input
-                placeholder={"Betreff"}
-                name={"regarding"}
-                type={"text"}
-                value={formik.values.regarding}
-                onChange={formik.handleChange}
-                onBlur={formik.handleBlur}
-              />
+            <form id="contact-form" onSubmit={formik.handleSubmit}>
+              <div>
+                <Input
+                  placeholder={"Vorname"}
+                  name={"firstName"}
+                  type={"text"}
+                  value={formik.values.firstName}
+                  onChange={formik.handleChange}
+                  onBlur={formik.handleBlur}
+                />
+                <Input
+                  placeholder={"Nachname"}
+                  name={"lastName"}
+                  type={"text"}
+                  value={formik.values.lastName}
+                  onChange={formik.handleChange}
+                  onBlur={formik.handleBlur}
+                />
+              </div>
+
+              <div>
+                <Input
+                  placeholder={"E-mail"}
+                  name={"email"}
+                  type={"email"}
+                  value={formik.values.email}
+                  onChange={formik.handleChange}
+                  onBlur={formik.handleBlur}
+                />
+                <Input
+                  placeholder={"Telefonnummer"}
+                  name={"number"}
+                  type={"number"}
+                  value={formik.values.number}
+                  onChange={formik.handleChange}
+                  onBlur={formik.handleBlur}
+                />
+              </div>
+
+              <div>
+                <Input
+                  className="last"
+                  placeholder={"Betreff"}
+                  name={"regarding"}
+                  type={"text"}
+                  value={formik.values.regarding}
+                  onChange={formik.handleChange}
+                  onBlur={formik.handleBlur}
+                />
+              </div>
               <textarea
-                placeholder='z.B. ich bin Vegetarianer(in),ich trinke keinen Alkohol, etc.'
+                placeholder="z.B. ich bin Vegetarianer(in),ich trinke keinen Alkohol, etc."
                 name={"someText"}
                 value={formik.values.someText}
                 onChange={formik.handleChange}
@@ -127,9 +138,11 @@ function Contact() {
         </LeftDiv>
         <RightDiv>
           <address>
-            <div className='head'>Tel: +995 577 61 55 29</div>
-            <div className='middle'>Mail: reisezielkaukasus@gmail.com</div>
-            <div className='down'>Address: M.Khergiani St.</div>
+            <div className="head">Tel: +995 599 495 595</div>
+            <div className="middle">Mail: reisezielkaukasus@gamil.com</div>
+            <div className="down">
+              Address: M.Khergianis St.N14, Lentekhi, 2900
+            </div>
           </address>
         </RightDiv>
       </MainSection>
@@ -147,6 +160,9 @@ const MainSection = styled.section`
   display: flex;
   flex-direction: column;
   background-color: #cfeaf6;
+  /* margin-top: 5em; */
+    margin-top: 2em;
+
   @media (max-width: 1366px) {
     flex-direction: column;
     height: max-content;
@@ -176,11 +192,25 @@ const DownLeftDiv = styled.div`
     width: 100%;
     height: 90%;
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
+    /* flex-wrap: wrap; */
+    align-items: center;
+    justify-content: center;
     @media (max-width: 600px) {
       flex-direction: column;
       align-items: center;
     }
+    @media (max-width: 1325px) {
+      div {
+        width: min-content;
+      }
+    }
+    @media (max-width: 670px) {
+      div {
+        width: 90%;
+      }
+    }
+
     input {
       width: 600px;
       height: 4rem;
@@ -194,16 +224,24 @@ const DownLeftDiv = styled.div`
       :focus {
         border: 2px solid #00ff00;
       }
-      @media (max-width: 1366px) {
-        width: 40%;
+      @media (max-width: 670px) {
+        width: 100%;
+        margin: 0;
+        margin-top: 2em;
       }
-      @media (max-width: 600px) {
+      /* @media (max-width: 1366px) {
+        width: 40%;
+      } */
+      /* @media (max-width: 600px) {
         width: 70%;
         margin: 1em;
-      }
+      } */
     }
+    /* .last{
+      width: 66%;
+    } */
     textarea {
-      width: 600px;
+      width: 80%;
       min-height: 10rem;
       height: min-content;
       margin: 2em;
@@ -216,12 +254,19 @@ const DownLeftDiv = styled.div`
       :focus {
         border: 2px solid #00ff00;
       }
-      @media (max-width: 1220px) {
+
+      /* @media (max-width: 1220px) {
         width: 40%;
       }
       @media (max-width: 600px) {
         width: 70%;
         margin: 1em;
+      } */
+      @media (max-width: 1325px) {
+        width: 600px;
+      }
+      @media (max-width: 670px) {
+        width: 90%;
       }
     }
     button {
@@ -241,6 +286,14 @@ const RightDiv = styled.div`
   display: flex;
   @media (max-width: 1366px) {
     height: 11rem;
+    margin-top: 7em;
+    text-align: center;
+  }
+  @media (max-width: 580px) {
+    align-items: center;
+    justify-content: center;
+    padding-top: 40px;
+    padding-bottom: 20px;
   }
   address {
     width: 100%;
@@ -249,6 +302,9 @@ const RightDiv = styled.div`
     grid-template-areas: "head", "middle", "down";
     div {
       font-size: 1.2rem;
+    }
+    @media (max-width: 580px) {
+      width: fit-content;
     }
   }
 `;

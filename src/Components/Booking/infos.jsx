@@ -1,12 +1,13 @@
 import styled from "styled-components";
 import propTypes from "prop-types";
 
-function Infos({start, end, price, contactHandler, bookingHandler, id, availability}) {
+function Infos({start, end, date, price, contactHandler, bookingHandler, id, availability}) {
   return (
     <>
       <tr>
-        <td>{start}</td>
-        <td>{end}</td>
+        {/* <td>{start}</td>
+        <td>{end}</td> */}
+        <td className="pad">{date}</td>
         <td>from EUR {price}</td>
         <td>
           <img src={process.env.REACT_APP_BASE_URL + availability} alt='img not found' />
@@ -29,23 +30,27 @@ const MainButton = styled.button`
   cursor: pointer;
   border: none;
   border-radius: 10px;
-  background-color: #2828e4;
-  color: white;
+  background-color: #7B952C;
+  /* color: white; */
   &:hover {
-    background-color: #0606a7;
+    background-color: #55681c;
     transition: 700ms;
   }
   &:last-child {
-    background-color: red;
+    background-color: #ffb703;
     &:hover {
-      background-color: #ad0202;
+      background-color: #c58f05;
       transition: 700ms;
     }
   }
+.pad {
+  width: max-content;
+}
 `;
 
 Infos.propTypes = {
-  start: propTypes.string.isRequired,
-  end: propTypes.string.isRequired,
+  // start: propTypes.string.isRequired,
+  // end: propTypes.string.isRequired,
+    date: propTypes.string.isRequired,
   price: propTypes.number.isRequired,
 };

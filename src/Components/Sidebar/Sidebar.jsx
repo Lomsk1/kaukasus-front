@@ -31,9 +31,11 @@ const Sidebar = ({ isOpen, toggle, homePage }) => {
             ) : (
               <SidebarRoute to={"/"}>Home</SidebarRoute>
             )}
-            <SidebarRoute to='/about'>Uber Uns</SidebarRoute>
-            <SidebarRoute to='/photo_blog'>Photo Blog</SidebarRoute>
-            <SidebarRoute to='/contact'>Contact</SidebarRoute>
+            <SidebarRoute to="/about">ÜBER UNS</SidebarRoute>
+            <SidebarRoute to="/photo_blog">FOTO BLOG</SidebarRoute>
+            <SidebarRoute to="/contact">KONTAKT</SidebarRoute>
+            <SidebarRoute to="/about_countries">Über drei Länder</SidebarRoute>
+            <SidebarRoute to="/servicess" >unsere service</SidebarRoute>
           </SidebarMenu>
         </SidebarWrapper>
       </SidebarContainer>

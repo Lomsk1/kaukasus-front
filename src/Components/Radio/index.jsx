@@ -20,7 +20,7 @@ export default Radio;
 
 const Div = styled.div`
   width: 100%;
-  height: 2rem;
+  height: 1rem;
   display: flex;
   align-items: center;
   margin-top: ${props => props.marginTop || "0"};

@@ -33,7 +33,7 @@ function HomeAll() {
       <div>
         <Home />
         <Element name={"pages"} />
-        <Page>
+        {/* <Page>
          
           {websites &&
             websites.map((website, index) => (
@@ -47,9 +47,8 @@ function HomeAll() {
                 country={website.title}
               />
             ))}
-        </Page>
+        </Page> */}
       </div>
-      <Footer />
     </>
   );
 }

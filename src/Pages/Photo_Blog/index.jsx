@@ -1,20 +1,19 @@
 import { Fragment, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
-import HeaderImg from "../../Components/Header/Header";
 import PhotoBox from "../../Components/PhotoBox";
 import { getPhotosData } from "./photo-action";
 import Navbar from "../../Components/Navbar/Navbar";
 import Sidebar from "../../Components/Sidebar/Sidebar";
 import { useState } from "react";
 import Footer from "../../Components/Footer";
-
+import HeaderImgStatic from "../../Components/Header/HeaderVol2";
+import headerImage from "../../assets/images/Foto-Blog.jpg";
 
 function PhotoBlog() {
   const dispatch = useDispatch();
-  const { photoData, isLoading } = useSelector(state => state.photo);
+  const { photoData, isLoading } = useSelector((state) => state.photo);
   const [isOpen, setIsOpen] = useState(false);
-
 
   const toggle = () => {
     setIsOpen(!isOpen);
@@ -28,25 +27,25 @@ function PhotoBlog() {
     <Fragment>
       <Sidebar isOpen={isOpen} toggle={toggle} />
       <Navbar toggle={toggle} />
-      <HeaderImg description={"Photo Blog"} />
+      <HeaderImgStatic description={"FOTO BLOG"} image={headerImage} />
       <MainSection>
         <Div>
           <MomentsDiv>
-            <p>MOMENTS LIKE THIS</p>
-            <span>a photoblog by Giorgi Liparteliani</span>
+            <p>Meine Reisen in Bildern</p>
+            <span>Foto-Erzählungen von Giorgi Liparteliani</span>
           </MomentsDiv>
-            {!isLoading &&
-              photoData.map(photo => {
-                return (
-                  <PhotoBox
-                    key={photo.id}
-                    url={photo.image}
-                    title={photo.title}
-                    description={photo.description}
-                    id={photo.id}
-                  />
-                );
-              })}
+          {!isLoading &&
+            photoData.map((photo) => {
+              return (
+                <PhotoBox
+                  key={photo.id}
+                  url={photo.image}
+                  title={photo.title}
+                  description={photo.description}
+                  id={photo.id}
+                />
+              );
+            })}
         </Div>
       </MainSection>
 
@@ -56,7 +55,6 @@ function PhotoBlog() {
 }
 
 export default PhotoBlog;
-
 
 const MainSection = styled.section`
   width: 100%;

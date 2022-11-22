@@ -17,7 +17,7 @@ export const getTourById = createAsyncThunk(
   "tour/getTourById",
   async (params, { rejectWithValue }) => {
     try {
-      const { data } = await axios.get(`tours/${params.id}`);
+      const { data } = await axios.get(`tours/${params.id}/`);
       return data;
     } catch (err) {
       rejectWithValue(err.message);

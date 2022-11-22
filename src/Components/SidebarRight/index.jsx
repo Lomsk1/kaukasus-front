@@ -16,32 +16,42 @@ function SidebarRight({
 }) {
   const [val, setVal] = useState(null);
   const dispatch = useDispatch();
-  const { tagData } = useSelector(state => state.tag);
+  const { tagData } = useSelector((state) => state.tag);
 
-  const {
-    register,
-    handleSubmit,
-  } = useForm();
+  const { register, handleSubmit } = useForm();
 
   useEffect(() => {
-    if (val) {
-      dispatch(
-        getToursWithFilter({
-          id: val,
-        })
-      );
+    let isApiSubscribed = true;
+    if (isApiSubscribed) {
+      if (val) {
+        dispatch(
+          getToursWithFilter({
+            id: val,
+          })
+        );
+      }
     }
+    return () => {
+      isApiSubscribed = false;
+    };
   }, [val, dispatch]);
 
   useEffect(() => {
-    dispatch(getTags());
+    let isApiSubscribed = true;
+    if (isApiSubscribed) {
+      dispatch(getTags());
+    }
+    return () => {
+      isApiSubscribed = false;
+    };
   }, [dispatch]);
+  
 
   return (
     <Fragment>
       <SideBars>
         <RightDivTitle>
-          <h3>Suche Nach</h3>
+          <h3>Suchen Sie nach</h3>
         </RightDivTitle>
         <RightDivFirst>
           <h4>Reisesorte</h4>
@@ -49,42 +59,45 @@ function SidebarRight({
         <RadioBoxes>
           <Radio
             label={"All Tours"}
-            topSize='1em'
+            topSize="1em"
             value={""}
             onChange={allHandler}
           />
           <Radio
             label={"Guaranteed"}
-            topSize='1em'
+            topSize="1em"
             value={""}
             onChange={guaranteed}
           />
           <Radio
             label={"Not Guaranteed"}
-            topSize='1em'
+            topSize="1em"
             value={""}
             onChange={notGuaranteed}
           />
-          {tagData &&
-            tagData.map(tag => (
+          {tagData ? (
+            tagData.map((tag) => (
               <Radio
                 key={tag.id}
                 label={tag.name}
-                topSize='1em'
+                topSize="1em"
                 value={tag.id}
-                onChange={e => {
+                onChange={(e) => {
                   setVal(e.target.value);
                 }}
                 onClick={close}
               />
-            ))}
+            ))
+          ) : (
+            <div>Loading...</div>
+          )}
         </RadioBoxes>
         <RightDivFirst size={"2em"}>
           <h4>Zeitraum</h4>
         </RightDivFirst>
         <form
-          method='POST'
-          encType='multipart/form-data'
+          method="POST"
+          encType="multipart/form-data"
           onSubmit={handleSubmit(onSubmit)}
         >
           <CalendarDiv>
@@ -112,7 +125,7 @@ function SidebarRight({
             </MainDiv>
           </CalendarDiv>
           <Button
-            type='submit'
+            type="submit"
             onChange={() => {
               console.log("click");
             }}
@@ -130,41 +143,44 @@ function SidebarRight({
           <RadioBoxes>
             <Radio
               label={"All Tours"}
-              topSize='1em'
+              topSize="1em"
               value={""}
               onChange={allHandler}
             />
             <Radio
               label={"Guaranteed"}
-              topSize='1em'
+              topSize="1em"
               value={""}
               onChange={guaranteed}
             />
             <Radio
               label={"Not Guaranteed"}
-              topSize='1em'
+              topSize="1em"
               value={""}
               onChange={notGuaranteed}
             />
-            {tagData &&
-              tagData.map(tag => (
+            {tagData ? (
+              tagData.map((tag) => (
                 <Radio
                   key={tag.id}
                   label={tag.name}
-                  topSize='1em'
+                  topSize="1em"
                   value={tag.id}
-                  onChange={e => {
+                  onChange={(e) => {
                     setVal(e.target.value);
                   }}
                 />
-              ))}
+              ))
+            ) : (
+              <div>Loading...</div>
+            )}
           </RadioBoxes>
           <RightDivFirst size={"2em"}>
             <h4>Zeitraum</h4>
           </RightDivFirst>
           <form
-            method='POST'
-            encType='multipart/form-data'
+            method="POST"
+            encType="multipart/form-data"
             onSubmit={handleSubmit(onSubmit)}
           >
             <CalendarDiv>
@@ -191,9 +207,7 @@ function SidebarRight({
                 />
               </MainDiv>
             </CalendarDiv>
-            <Button type='submit'>
-             Weiter
-            </Button>
+            <Button type="submit">Weiter</Button>
           </form>
         </Mini>
       )}
@@ -205,12 +219,17 @@ export default SidebarRight;
 
 const SideBars = styled.div`
   width: 20%;
-  height: 100%;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   -webkit-box-shadow: inset 1px 0px 25px 21px rgba(255, 255, 255, 0.78);
   box-shadow: inset 1px 0px 25px 21px rgba(60, 188, 195, 0.1);
+  /* z-index: 9999; */
+
+  position: sticky;
+  right: 0;
+  top: 40px;
   @media (max-width: 1000px) {
     width: 30%;
     @media (max-width: 800px) {
@@ -223,6 +242,8 @@ const RightDivTitle = styled.div`
   width: 80%;
   height: 5rem;
   margin-top: 2em;
+  position: sticky;
+
   h3 {
     font-size: 2rem;
     margin: 0;
@@ -238,7 +259,7 @@ const RightDivTitle = styled.div`
 const RightDivFirst = styled.div`
   width: 80%;
   height: 3rem;
-  margin-top: ${props => props.size};
+  margin-top: ${(props) => props.size};
   h4 {
     font-size: 1.25rem;
     margin: 0;
@@ -248,7 +269,6 @@ const RightDivFirst = styled.div`
     width: 100%;
     display: flex;
     justify-content: center;
-    
   }
 `;
 const RadioBoxes = styled.div`
@@ -313,7 +333,7 @@ const MainDiv = styled.div`
   height: 2rem;
   display: flex;
   align-items: center;
-  margin-top: ${props => props.marginTop || "0"};
+  margin-top: ${(props) => props.marginTop || "0"};
   input {
     margin-left: 3em;
     cursor: pointer;

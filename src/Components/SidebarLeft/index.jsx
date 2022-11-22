@@ -57,13 +57,15 @@ export default SidebarLeft;
 
 const SideBars = styled.div`
   width: 20%;
-  height: 100%;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   -webkit-box-shadow: inset 1px 0px 25px 21px rgba(255, 255, 255, 0.78);
   box-shadow: inset 1px 0px 25px 21px rgba(60, 188, 195, 0.1);
-
+  position: sticky;
+  right: 0;
+  top: 0;
   @media (max-width: 1000px) {
     width: 30%;
     @media (max-width: 800px) {

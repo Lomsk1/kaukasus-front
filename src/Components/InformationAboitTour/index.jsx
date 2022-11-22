@@ -77,32 +77,41 @@ const InformationAboutTour = styled.div`
   width: 100%;
   height: 5rem;
   display: flex;
+  justify-content: center;
+  align-items: center;
   @media (max-width: 770px) {
-    /* flex-direction: column; */
     width: 60%;
     height: 100%;
     flex-direction: column;
+    justify-content: start;
+    align-items: flex-start;
   }
 `;
 const InformationDiv = styled.div`
-  width: 25%;
+  /* width: 25%; */
+  width: fit-content;
   height: 100%;
   display: flex;
+  justify-content: center;
+  align-items: center;
   @media (max-width: 770px) {
     width: 100%;
     height: 25%;
+    justify-content: start;
+    align-items: flex-start;
   }
 `;
 const IconDiv = styled.div`
   width: 20%;
-  height: 100%;
+  height: 40%;
   overflow: hidden;
   display: flex;
   align-items: center;
+  padding: 20px;
   justify-content: center;
   @media (max-width: 445px) {
     width: 30%;
-    svg{
+    svg {
       width: 30px;
       height: 30px;
     }

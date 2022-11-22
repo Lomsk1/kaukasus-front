@@ -7,41 +7,47 @@ function Footer() {
   return (
     <MainContent>
       <MiddleDiv>
-        <div className='up'>
-          <div className='quota'>
-            <p>Kaukasus Travel</p>
+        <div className="up">
+          <div className="quota">
+            <p>Kaukasus Reisen</p>
             <p>
-              <span>
-                Remember that happiness is a way of travel, not a destination.
-              </span>
+              <span>Entdecken, erleben, geniessen</span>
             </p>
           </div>
 
-          <div className='social'>
-            <ul className='wrapper'>
-              <li className='icon facebook'>
-                <Facebook />
-                <span className='tooltip'>Facebook</span>
-                <span></span>
-              </li>
-
-              <li className='icon instagram'>
-                <span className='tooltip'>Instagram</span>
-                <Instagram />
-                <span></span>
-              </li>
+          <div className="social">
+            <ul className="wrapper">
+              <a href="https://www.facebook.com/gia.liparteliani.7" target='_blank'>
+                <li className="icon facebook">
+                  <Facebook />
+                  <span className="tooltip">Facebook</span>
+                  <span></span>
+                </li>
+              </a>
+              <a href="">
+                <li className="icon instagram">
+                  <span className="tooltip">Instagram</span>
+                  <Instagram />
+                  <span></span>
+                </li>
+              </a>
             </ul>
           </div>
 
-          <div className='tel'>
+          <div className="tel">
             <address>
-              <p>Tel:</p>
-              <p>+995 12 12 12</p>
+              <p>Tel: +995 599 495 595</p>
+              <p>
+                E-mail:{" "}
+                <a href="mailto:reisezielkaukasus@gamil.com">
+                  reisezielkaukasus@gamil.com
+                </a>
+              </p>
             </address>
             <Link to={"/term"}>A G B</Link>
           </div>
         </div>
-        <div className='down'>
+        <div className="down">
           <p>
             © 2022 Kaukasus-Travel. SeedCats, Georgia, Tbilisi. All Rights
             Reserved
@@ -71,7 +77,7 @@ const MiddleDiv = styled.div`
   @import url("https://fonts.googleapis.com/css2?family=Aref+Ruqaa+Ink:wght@700&display=swap");
   @import url("https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500&display=swap");
 
-  @media (max-width: 650px) {
+  @media (max-width: 1340px) {
     width: 95%;
   }
 
@@ -80,13 +86,21 @@ const MiddleDiv = styled.div`
     height: 80%;
     display: flex;
     justify-content: space-between;
+    align-items: center;
+    @media (max-width: 620px) {
+      flex-direction: column;
+    }
 
     .quota {
       width: 35%;
-      height: 100%;
+      height: 80%;
       color: #dadada;
       @media (max-width: 1115px) {
         width: 40%;
+      }
+      @media (max-width: 620px) {
+        width: 100%;
+        height: max-content;
       }
       p {
         font-family: "Aref Ruqaa Ink", serif;
@@ -116,8 +130,8 @@ const MiddleDiv = styled.div`
       }
     }
     .social {
-      width: 30%;
-      height: 100%;
+      width: 20%;
+      height: 80%;
       @import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
 
       display: flex;
@@ -134,6 +148,13 @@ const MiddleDiv = styled.div`
       } */
       @media (max-width: 960px) {
         width: 35%;
+      }
+      /* @media (max-width: 620px) {
+      width: 100%;
+      height: max-content;
+    } */
+      @media (max-width: 620px) {
+        display: none;
       }
 
       .wrapper {
@@ -214,8 +235,17 @@ const MiddleDiv = styled.div`
       }
     }
     .tel {
-      width: 20%;
-      height: 100%;
+      width: 40%;
+      height: 80%;
+      @media (max-width: 620px) {
+        width: 100%;
+        height: max-content;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+        padding-bottom: 2em;
+      }
       p {
         color: white;
         font-size: 1.5rem;
@@ -234,6 +264,11 @@ const MiddleDiv = styled.div`
         &:hover {
           color: #a70606;
           transition: 500ms;
+        }
+        &:nth-child(1) {
+          @media (max-width: 860px) {
+            font-size: 1rem !important;
+          }
         }
       }
     }

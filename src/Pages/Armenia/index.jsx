@@ -13,18 +13,22 @@ import { useForm } from "react-hook-form";
 import BarBurger from "../../assets/icons/sideBar";
 import X from "../../assets/icons/x";
 import Footer from "../../Components/Footer";
+import HeaderImgStatic from "../../Components/Header/HeaderVol2";
+import { webJson } from "../../Hoc/webJsons";
+
 
 function Georgia() {
   const dispatch = useDispatch();
-  const { tourData, isLoading } = useSelector(state => state.tour);
+  const { tourData, isLoading } = useSelector((state) => state.tour);
   const [data, setData] = useState([]);
-  const { filterData } = useSelector(state => state.tour);
+  const { filterData } = useSelector((state) => state.tour);
   const [filterTour, setFilterTour] = useState([]);
   const [mainOpen, setMainOpen] = useState(true);
   const [guaranteedOpen, setGuaranteedOpen] = useState(false);
   const [some, setSome] = useState(false);
   const [leftOpen, setLeftOpen] = useState(false);
   const [rightOpen, setRightOpen] = useState(false);
+  const [bgIMG, setBgImg] = useState(null);
 
   const leftClick = () => {
     setLeftOpen(true);
@@ -35,20 +39,43 @@ function Georgia() {
     setLeftOpen(false);
     setRightOpen(true);
   };
+  useEffect(() => {
+    let isApiSubscribed = true;
+    if (isApiSubscribed) {
+      setBgImg(webJson[1].image);
+    }
+    return () => {
+      isApiSubscribed = false;
+    };
+  }, [webJson]);
 
   useEffect(() => {
-    dispatch(getTourData());
+    let isApiSubscribed = true;
+    if (isApiSubscribed) {
+      dispatch(getTourData());
+    }
+    return () => {
+      isApiSubscribed = false;
+    };
   }, [dispatch]);
 
   useEffect(() => {
-    if (tourData.length > 0) {
-      setData(tourData.filter(country => country.countryName === "Armenia"));
+    let isApiSubscribed = true;
+    if (isApiSubscribed) {
+      if (tourData.length > 0) {
+        setData(
+          tourData.filter((country) => country.countryName === "Armenia")
+        );
+      }
     }
+    return () => {
+      isApiSubscribed = false;
+    };
   }, [tourData, isLoading]);
 
   const allTourHandler = () => {
     dispatch(getTourData());
-    setData(tourData.filter(country => country.countryName === "Armenia"));
+    setData(tourData.filter((country) => country.countryName === "Armenia"));
     setMainOpen(true);
     setGuaranteedOpen(false);
     setLeftOpen(false);
@@ -56,9 +83,15 @@ function Georgia() {
   };
 
   useEffect(() => {
-    setFilterTour(
-      filterData.filter(country => country.countryName === "Armenia")
-    );
+    let isApiSubscribed = true;
+    if (isApiSubscribed) {
+      setFilterTour(
+        filterData.filter((country) => country.countryName === "Armenia")
+      );
+    }
+    return () => {
+      isApiSubscribed = false;
+    };
   }, [filterData]);
 
   const [isOpen, setIsOpen] = useState(false);
@@ -69,20 +102,21 @@ function Georgia() {
 
   const [calendarData, setCalendarData] = useState([]);
 
-  const {
-    reset
-  } = useForm();
+  const { reset } = useForm();
 
-  const onSubmit = async data => {
+  const onSubmit = async (data) => {
     const formData = new FormData();
 
     formData.append("startDate", data.start);
     formData.append("endDate", data.end);
 
-    const response = await fetch(`${process.env.REACT_APP_BASE_URL}/filters/datefilter/`, {
-      method: "POST",
-      body: formData,
-    });
+    const response = await fetch(
+      `${process.env.REACT_APP_BASE_URL}/filters/datefilter/`,
+      {
+        method: "POST",
+        body: formData,
+      }
+    );
     const datas = await response.json();
 
     reset();
@@ -94,9 +128,15 @@ function Georgia() {
   };
 
   useEffect(() => {
-    if (filterTour) {
-      setMainOpen(true);
+    let isApiSubscribed = true;
+    if (isApiSubscribed) {
+      if (filterTour) {
+        setMainOpen(true);
+      }
     }
+    return () => {
+      isApiSubscribed = false;
+    };
   }, [filterTour]);
 
   const [guaranteedTour, setGuaranteedTour] = useState([]);
@@ -106,7 +146,7 @@ function Georgia() {
     dispatch(getTourData());
     setGuaranteedTour(
       tourData.filter(
-        execution =>
+        (execution) =>
           execution.execution === "Guaranteed" &&
           execution.countryName === "Georgia"
       )
@@ -123,7 +163,7 @@ function Georgia() {
     dispatch(getTourData());
     setNotGuaranteedTour(
       tourData.filter(
-        execution =>
+        (execution) =>
           execution.execution === "Not Guaranteed" &&
           execution.countryName === "Georgia"
       )
@@ -140,7 +180,11 @@ function Georgia() {
     <Fragment>
       <Sidebar isOpen={isOpen} toggle={toggle} />
       <Navbar toggle={toggle} />
-      <HeaderImg description={"Armenia"} />
+      {bgIMG ? (
+        <HeaderImgStatic description={"Armenia"} image={bgIMG} />
+      ) : (
+        <div>Loading...</div>
+      )}
       <MainSection>
         <SidebarLeft aboutCountry={""} />
 
@@ -162,7 +206,7 @@ function Georgia() {
 
         {leftOpen && (
           <Module>
-            <div className='x'>
+            <div className="x">
               <X
                 onClick={() => {
                   setLeftOpen(false);
@@ -176,7 +220,7 @@ function Georgia() {
                 }}
               />
             </div>
-            <div className='y'>
+            <div className="y">
               <SidebarLeft minimal />
             </div>
           </Module>
@@ -186,7 +230,7 @@ function Georgia() {
 
         {rightOpen && (
           <Module>
-            <div className='x'>
+            <div className="x">
               <X
                 onClick={() => {
                   setLeftOpen(false);
@@ -200,7 +244,7 @@ function Georgia() {
                 }}
               />
             </div>
-            <div className='y'>
+            <div className="y">
               <SidebarRight
                 onSubmit={onSubmit}
                 allHandler={allTourHandler}
@@ -221,7 +265,7 @@ function Georgia() {
         <MainBar>
           {mainOpen ? (
             data && !isLoading ? (
-              data.map(tour => (
+              data.map((tour) => (
                 <TourBox
                   isLoading={isLoading}
                   key={tour.id}
@@ -233,7 +277,7 @@ function Georgia() {
                 />
               ))
             ) : (
-              filterTour.map(tour => (
+              filterTour.map((tour) => (
                 <TourBox
                   isLoading={isLoading}
                   key={tour.id}
@@ -246,7 +290,7 @@ function Georgia() {
               ))
             )
           ) : calendarData.length > 0 ? (
-            calendarData.map(tour => (
+            calendarData.map((tour) => (
               <TourBox
                 isLoading={isLoading}
                 key={tour.id}
@@ -263,7 +307,7 @@ function Georgia() {
           {guaranteedOpen &&
             !some &&
             guaranteedTour &&
-            guaranteedTour.map(tour => (
+            guaranteedTour.map((tour) => (
               <TourBox
                 isLoading={isLoading}
                 key={tour.id}
@@ -277,7 +321,7 @@ function Georgia() {
           {guaranteedOpen &&
             some &&
             notGuaranteedTour &&
-            notGuaranteedTour.map(tour => (
+            notGuaranteedTour.map((tour) => (
               <TourBox
                 isLoading={isLoading}
                 key={tour.id}

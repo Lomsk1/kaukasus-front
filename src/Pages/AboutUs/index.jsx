@@ -1,22 +1,27 @@
 import { Fragment, useEffect, useState } from "react";
 import styled from "styled-components";
-import Skeleton from "react-loading-skeleton";
-
 import gia from "../../assets/images/gia.jpg";
 import AvatarRound from "../../Components/AvatarRound";
-import HeaderImg from "../../Components/Header/Header";
 import { useDispatch, useSelector } from "react-redux";
 import { getMemberData } from "../../members/member-action";
 import Navbar from "../../Components/Navbar/Navbar";
 import Sidebar from "../../Components/Sidebar/Sidebar";
 import Footer from "../../Components/Footer";
+import HeaderImgStatic from "../../Components/Header/HeaderVol2";
+import headerImage from '../../assets/images/Über_uns.jpg'
 
 function About() {
   const dispatch = useDispatch();
-  const { memberData, isLoading } = useSelector(state => state.member);
+  const { memberData, isLoading } = useSelector((state) => state.member);
 
   useEffect(() => {
-    dispatch(getMemberData());
+    let isApiSubscribed = true;
+    if (isApiSubscribed) {
+      dispatch(getMemberData());
+    }
+    return () => {
+      isApiSubscribed = false;
+    };
   }, [dispatch]);
 
   const [isOpen, setIsOpen] = useState(false);
@@ -29,12 +34,12 @@ function About() {
     <Fragment>
       <Sidebar isOpen={isOpen} toggle={toggle} />
       <Navbar toggle={toggle} />
-      <HeaderImg description={"UNS AFF"} />
+      <HeaderImgStatic description={"ÜBER UNS"} image={headerImage}  />
       <DescriptionSection>
         <UpperDesc>
           <ImgDiv>
             <div>
-              <img src={gia} alt='Ushba und Elbrus' />
+              <img src={gia} alt="Ushba und Elbrus" />
             </div>
           </ImgDiv>
           <TextDiv>
@@ -98,7 +103,7 @@ function About() {
       <AvatarSection>
         <AvatarBox>
           {!isLoading ? (
-            memberData.map(member => (
+            memberData.map((member) => (
               <AvatarRound
                 key={member.id}
                 name={member.first_name}
@@ -108,7 +113,7 @@ function About() {
               />
             ))
           ) : (
-            <Skeleton animation='wave' count={3} height={200} width={200} />
+           <div>Loading ... </div>
           )}
         </AvatarBox>
       </AvatarSection>

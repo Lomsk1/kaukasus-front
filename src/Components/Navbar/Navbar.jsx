@@ -38,16 +38,16 @@ const Navbar = ({ toggle, homePage }) => {
               <NavLinksR to={"/about"}>ÜBER UNS</NavLinksR>
             </NavItem>
             <NavItem>
-              <NavLinksR to='/photo_blog'>FOTO BLOG</NavLinksR>
+              <NavLinksR to="/photo_blog">FOTO BLOG</NavLinksR>
             </NavItem>
             <NavItem>
-              <NavLinksR to='/contact'>KONTAKT</NavLinksR>
+              <NavLinksR to="/contact">KONTAKT</NavLinksR>
             </NavItem>
             <NavItem>
-              <NavLinksR to='/about_countries'>About Countries</NavLinksR>
+              <NavLinksR to="/about_countries">Über drei Länder</NavLinksR>
             </NavItem>
             <NavItem>
-              <NavLinksR to='/login'>Login</NavLinksR>
+              <NavLinksR to="/servicess">unsere service</NavLinksR>
             </NavItem>
           </NavMenu>
         </NavbarContainer>

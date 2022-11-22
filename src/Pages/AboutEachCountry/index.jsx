@@ -6,7 +6,7 @@ import styled from "styled-components";
 import Footer from "../../Components/Footer";
 import Navbar from "../../Components/Navbar/Navbar";
 import Sidebar from "../../Components/Sidebar/Sidebar";
-import websites from "../../websites.json";
+import { webJson } from "../../Hoc/webJsons";
 
 function AboutEachCountry() {
   const [aboutCountryData, setAboutCountryData] = useState([]);
@@ -15,11 +15,19 @@ function AboutEachCountry() {
   const { id } = useParams();
 
   useEffect(() => {
-    fetch(`${process.env.REACT_APP_BASE_URL}/country_info/`)
-      .then(response => response.json())
-      .then(data =>
-        setAboutCountryData(data.filter(country => country.id === parseInt(id)))
-      );
+    let isApiSubscribed = true;
+    if (isApiSubscribed) {
+      fetch(`${process.env.REACT_APP_BASE_URL}/country_info/`)
+        .then((response) => response.json())
+        .then((data) =>
+          setAboutCountryData(
+            data.filter((country) => country.id === parseInt(id))
+          )
+        );
+    }
+    return () => {
+      isApiSubscribed = false;
+    };
   }, [id]);
 
   useEffect(() => {
@@ -30,7 +38,7 @@ function AboutEachCountry() {
   }, []);
 
   useEffect(() => {
-    setWeb(websites.filter(web => web.id === parseInt(id)));
+    setWeb(webJson.filter((web) => web.id === parseInt(id)));
   }, [id]);
 
   const [isOpen, setIsOpen] = useState(false);
@@ -44,16 +52,20 @@ function AboutEachCountry() {
       <Sidebar isOpen={isOpen} toggle={toggle} />
       <Navbar toggle={toggle} />
       <UpperSection>
-        <div className='middle'>{web && time && <h1>{web[0].title}</h1>}</div>
+        <div className="middle">
+          {web && time ? <h1>{web[0].title}</h1> : <div>Loading...</div>}
+        </div>
       </UpperSection>
 
       <TextSection>
-        {aboutCountryData && time && (
-          <div className='middle'>
+        {aboutCountryData && time ? (
+          <div className="middle">
             <h2>{aboutCountryData[0].title}</h2>
             <hr />
             <p>{aboutCountryData[0].description}</p>
           </div>
+        ) : (
+          <div>Loading...</div>
         )}
       </TextSection>
       <Footer />

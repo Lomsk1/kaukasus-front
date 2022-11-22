@@ -1,5 +1,6 @@
 {
   "name": "advanturer",
+  "homepage": "http://reiseziel-kaukasus.de/",
   "version": "0.1.0",
   "private": true,
   "proxy": "http://127.0.0.1:8000/",
@@ -49,6 +50,7 @@
     "redux-thunk": "^2.4.1",
     "skeleton": "^0.1.2",
     "styled-components": "^5.3.5",
+    "typescript": "^4.9.1-beta",
     "web-vitals": "^2.1.4",
     "yup": "^0.32.11"
   },

@@ -4,7 +4,8 @@ import Card from "../../Components/Cards/Card";
 import Footer from "../../Components/Footer";
 import Navbar from "../../Components/Navbar/Navbar";
 import Sidebar from "../../Components/Sidebar/Sidebar";
-import websites from "../../websites.json";
+import { webJson } from "../../Hoc/webJsons";
+import s from "../../assets/images/About_Contries_cover.jpg";
 
 function AboutCountries() {
   const [isOpen, setIsOpen] = useState(false);
@@ -18,8 +19,8 @@ function AboutCountries() {
       <Sidebar isOpen={isOpen} toggle={toggle} />
       <Navbar toggle={toggle} />
       <MainSection>
-        {websites &&
-          websites.map((website, index) => (
+        {webJson &&
+          webJson.map((website, index) => (
             <Card
               about
               id={website.id}
@@ -43,9 +44,9 @@ export default AboutCountries;
 const MainSection = styled.section`
   width: 100%;
   height: 100vh;
-  background-image: url("https://iso.500px.com/wp-content/uploads/2016/03/stock-photo-142984111-1500x1000.jpg");
+  /* background-image: url("../../assets/images/About_Contries_cover.jpg");
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: cover; */
   display: flex;
   align-items: center;
   justify-content: center;

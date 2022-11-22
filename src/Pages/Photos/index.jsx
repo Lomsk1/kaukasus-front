@@ -20,13 +20,20 @@ function Photos() {
   };
 
   useEffect(() => {
-    fetch(`${process.env.REACT_APP_BASE_URL}/photo-blog/all/${id}/`)
-      .then(response => response.json())
-      .then(data => setPhotoData(data));
+    let isApiSubscribed = true;
+    if (isApiSubscribed) {
+      fetch(`${process.env.REACT_APP_BASE_URL}/photo-blog/all/${id}/`)
+        .then((response) => response.json())
+        .then((data) => setPhotoData(data));
+    }
+
+    return () => {
+      isApiSubscribed = false;
+    };
   }, [id]);
 
   const zoomOutProperties = {
-    duration: 5000,
+    duration: 8000,
     transitionDuration: 500,
     infinite: true,
     indicators: true,
@@ -40,7 +47,7 @@ function Photos() {
       <Navbar toggle={toggle} />
       <MainSection>
         <MainDiv>
-          <div className='slide-container'>
+          <div className="slide-container">
             <Zoom {...zoomOutProperties}>
               {photoData.map((each, index) => (
                 <div key={index}>
@@ -72,14 +79,21 @@ const MainSection = styled.section`
 `;
 const MainDiv = styled.div`
   margin-top: 5rem;
+  /* height: 100vh; */
   @import url("https://fonts.googleapis.com/css2?family=Inconsolata&display=swap");
   .slide-container {
     width: 88%;
+    /* height: 100vh ; */
     margin: auto;
     border-radius: 15px;
     overflow: hidden;
     img{
-      border-radius: 15px;F
+      border-radius: 15px;
+      height: 80vh;
+      width: 100%;
+          @media (max-width: 550px) {
+      height: 50vh;
+    }
     }
 
     .each-slideshow-indicator::before {
@@ -116,5 +130,8 @@ const MainDiv = styled.div`
     @media (max-width: 768px) {
       width: 100%;
     }
+    /* @media (max-width: 550px) {
+      width: 80%;
+    } */
   }
 `;

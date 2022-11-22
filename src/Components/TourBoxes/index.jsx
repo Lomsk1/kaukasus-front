@@ -1,13 +1,17 @@
 import styled from "styled-components";
 import { BsFillClockFill } from "react-icons/bs";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { Fragment } from "react";
 
 function TourBox({ url, price, duration, title, id }) {
+  const navigate = useNavigate()
+
+  const clickHandler = ()=> {
+    navigate(`/tour/${id}`)
+  }
   return (
     <Fragment>
-      <MainDiv>
-        <Link to={`/tour/${id}`}>
+      <MainDiv onClick={clickHandler}>
           <ImgDiv>
             <img src={process.env.REACT_APP_BASE_URL + url} alt='img not found' />
           </ImgDiv>
@@ -23,7 +27,6 @@ function TourBox({ url, price, duration, title, id }) {
               <p>ab € {price}</p>
             </div>
           </PriceDiv>
-        </Link>
       </MainDiv>
     </Fragment>
   );
@@ -32,17 +35,14 @@ function TourBox({ url, price, duration, title, id }) {
 export default TourBox;
 
 const MainDiv = styled.div`
-  width: 300px;
-  height: 320px;
+  width: 280px;
+  height: 300px;
   margin: 2em;
   display: flex;
   flex-direction: column;
   background-color: #ffffff;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   cursor: pointer;
-  a {
-    text-decoration: none;
-  }
 `;
 
 const ImgDiv = styled.div`

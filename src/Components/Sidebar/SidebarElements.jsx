@@ -17,6 +17,7 @@ export const SidebarContainer = styled.aside`
   transition: 0.3s ease-in-out;
   opacity: ${({ isOpen }) => (isOpen ? "100%" : "0")};
   top: ${({ isOpen }) => (isOpen ? "0" : "-100%")};
+  text-transform: uppercase;
   a {
     text-decoration: none;
     color: white;
@@ -61,6 +62,7 @@ export const SidebarLink = styled(LinkS)`
   transition: 0.2s ease-in-out;
   color: #fff;
   cursor: pointer;
+
 
   &:hover {
     color: #01bf71;
