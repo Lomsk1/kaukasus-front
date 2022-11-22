@@ -27,7 +27,6 @@ function EachTour() {
   const [serviceData, setServiceData] = useState([]);
   const [highlightData, setHighlightData] = useState([]);
   const [time, setTime] = useState(false);
-  // const [bgIMG, setBgImg] = useState({});
 
   useEffect(() => {
     let isApiSubscribed = true;

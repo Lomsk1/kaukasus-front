@@ -2,7 +2,6 @@ import { useState } from "react";
 import { Fragment, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
-import HeaderImg from "../../Components/Header/Header";
 import Navbar from "../../Components/Navbar/Navbar";
 import Sidebar from "../../Components/Sidebar/Sidebar";
 import SidebarLeft from "../../Components/SidebarLeft";

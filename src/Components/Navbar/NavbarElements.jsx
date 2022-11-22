@@ -55,6 +55,27 @@ export const NavMenu = styled.ul`
   }
 `;
 
+export const LogoItem = styled.div`
+  overflow: hidden;
+  width: fit-content;
+  height: 100%;
+  transform: translateX(-10em);
+  @media (max-width: 1530px){
+    transform: translateX(-5em);
+  }
+  @media (max-width: 1270px){
+    transform: translateX(-2em);
+  }
+  @media (max-width: 1150px){
+    transform: translateX(0em);
+  }
+  img {
+    width: fit-content;
+    height: 100%;
+    object-fit: cover;
+  }
+`;
+
 export const NavItem = styled.li`
   height: 80px;
 `;

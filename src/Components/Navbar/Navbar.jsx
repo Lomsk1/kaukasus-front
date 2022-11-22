@@ -7,13 +7,18 @@ import {
   NavItem,
   NavLinks,
   NavLinksR,
+  LogoItem
 } from "./NavbarElements";
 import { FaBars } from "react-icons/fa";
+import logo from "../../assets/images/logo.png";
 
 const Navbar = ({ toggle, homePage }) => {
   return (
     <>
       <Nav>
+        <LogoItem>
+          <img src={logo} alt="" />
+        </LogoItem>
         <NavbarContainer>
           <MobileIcon onClick={toggle}>
             <FaBars />
