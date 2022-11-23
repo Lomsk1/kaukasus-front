@@ -19,6 +19,7 @@ export default HeaderImgStatic;
 const Header = styled.header`
   width: 100%;
   height: 50vh;
+  text-transform: uppercase;
   /* background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;

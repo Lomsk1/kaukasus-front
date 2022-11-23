@@ -8,7 +8,7 @@ import Navbar from "../../Components/Navbar/Navbar";
 import Sidebar from "../../Components/Sidebar/Sidebar";
 import Footer from "../../Components/Footer";
 import HeaderImgStatic from "../../Components/Header/HeaderVol2";
-import headerImage from '../../assets/images/Über_uns.jpg'
+import headerImage from '../../assets/images/uber_uns.jpg'
 
 function About() {
   const dispatch = useDispatch();

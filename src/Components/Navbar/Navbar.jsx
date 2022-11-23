@@ -11,12 +11,16 @@ import {
 } from "./NavbarElements";
 import { FaBars } from "react-icons/fa";
 import logo from "../../assets/images/logo.png";
+import { useNavigate } from "react-router-dom";
 
 const Navbar = ({ toggle, homePage }) => {
+  const navigate  = useNavigate()
   return (
     <>
       <Nav>
-        <LogoItem>
+        <LogoItem onClick={()=>{
+          navigate('/')
+        }}>
           <img src={logo} alt="" />
         </LogoItem>
         <NavbarContainer>

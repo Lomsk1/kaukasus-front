@@ -8,17 +8,20 @@ export const webJson = [
       hexa: "#1D1148",
       title: "Georgia",
       image: geoCover,
+      description: 'Georgien'
     },
     {
       id: 3,
       hexa: "#FFCD00",
       title: "Armenia",
       image: armCover,
+      description: 'Armenien'
     },
     {
       id: 2,
       hexa: "#FF5041",
       title: "Azerbaijan",
       image: azrCover,
+      description: 'Azerbaijan'
     },
   ];

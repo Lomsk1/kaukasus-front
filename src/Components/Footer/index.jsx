@@ -133,11 +133,11 @@ const MiddleDiv = styled.div`
       width: 20%;
       height: 80%;
       @import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
-
+      font-family: "Poppins", sans-serif;
       display: flex;
       justify-content: center;
       align-items: center;
-      font-family: "Poppins", sans-serif;
+   
       place-items: center;
       /* background: linear-gradient(315deg, #ffffff, #d7e1ec); */
 

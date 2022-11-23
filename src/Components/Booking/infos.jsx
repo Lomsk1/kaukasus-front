@@ -8,13 +8,13 @@ function Infos({start, end, date, price, contactHandler, bookingHandler, id, ava
         {/* <td>{start}</td>
         <td>{end}</td> */}
         <td className="pad">{date}</td>
-        <td>from EUR {price}</td>
+        <td>ab EUR {price}</td>
         <td>
           <img src={process.env.REACT_APP_BASE_URL + availability} alt='img not found' />
         </td>
         <td>
           <MainButton onClick={() => bookingHandler(id)}>Buchen</MainButton>
-          <MainButton onClick={contactHandler}>Nachricht senden</MainButton>
+          <MainButton onClick={contactHandler}>Anfragen</MainButton>
         </td>
       </tr>
     </>
@@ -31,13 +31,14 @@ const MainButton = styled.button`
   border: none;
   border-radius: 10px;
   background-color: #7B952C;
-  /* color: white; */
+  color: white;
   &:hover {
     background-color: #55681c;
     transition: 700ms;
   }
   &:last-child {
     background-color: #ffb703;
+    color: black;
     &:hover {
       background-color: #c58f05;
       transition: 700ms;

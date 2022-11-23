@@ -4,7 +4,7 @@ import styled from "styled-components";
 import Navbar from "../../Components/Navbar/Navbar";
 import Sidebar from "../../Components/Sidebar/Sidebar";
 import HeaderImgStatic from "../../Components/Header/HeaderVol2";
-import headerImage from "../../assets/images/Usere Service.jpg";
+import headerImage from "../../assets/images/316827984_847511656444268_7795249211937970701_n.jpg";
 import Footer from "../../Components/Footer";
 
 function SiteServices() {
@@ -62,7 +62,7 @@ const ServiceSection = styled.section`
   flex-direction: column;
   padding-bottom: 2em;
 
-  .title{
+  .title {
     width: 90%;
     margin: 0 auto;
     min-height: 10rem;
@@ -71,18 +71,18 @@ const ServiceSection = styled.section`
     justify-content: center;
     padding-top: 3em;
     font-size: 2rem;
-    h1{
-        margin: 0;
-        text-align: center;
+    h1 {
+      margin: 0;
+      text-align: center;
     }
   }
 
-  .description{
+  .description {
     padding-top: 2em;
     width: 90%;
     margin: 0 auto;
-    p{
-        margin: 0;
+    p {
+      margin: 0;
     }
   }
 `;

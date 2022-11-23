@@ -49,7 +49,7 @@ const DayDiv = styled.div`
   min-height: 4rem;
   h1 {
     margin: 0;
-    font-size: 2.5rem;
+    font-size: 1.5rem;
   }
 `;
 const PhotoTitle = styled.div`
@@ -92,9 +92,9 @@ const Abbreviation = styled.div`
   min-height: 5rem;
   height: max-content;
   p {
-    font-size: 1.4rem;
+    font-size: 1rem;
     margin: 0;
-    font-weight: 700;
+
   }
 `;
 const Hr = styled.hr`

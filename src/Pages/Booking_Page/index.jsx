@@ -240,7 +240,7 @@ function BookingPage() {
                   onBlur={formik.handleBlur}
                 />
 
-                <label htmlFor="participants">Anzahl Reseiteilnehmer</label>
+                <label htmlFor="participants">Anzahl Reiseteilnehmer</label>
 
                 <Input
                   value={formik.values.participants}
@@ -262,7 +262,7 @@ function BookingPage() {
                 />
 
                 <fieldset>
-                  <legend>Important Information:</legend>
+                  <legend>Wichtige Infotmation:</legend>
 
                   {singleRoomData && time ? (
                     <>
@@ -273,12 +273,7 @@ function BookingPage() {
                     <div>Loading...</div>
                   )}
 
-                  <h3>
-                    Single rooms are only available to a limited extent, we
-                    recommend booking early!
-                  </h3>
-
-                  <span>*please fill out these fields.</span>
+                  <span>*diese Felder bitte ausfüllen.</span>
                 </fieldset>
 
                 <div>
@@ -288,7 +283,9 @@ function BookingPage() {
                     onChange={(e) => setAgree(e.target.checked)}
                   />
                   <label htmlFor="terms">
-                    <Link to={"/term"}>Agree to Terms and Conditions</Link>
+                    <Link to={"/term"}>
+                      Ich habe die AGBs gelesen und akzeptiert
+                    </Link>
                   </label>
                 </div>
                 {agree && time ? (
@@ -472,7 +469,7 @@ const FormDown = styled.div`
       margin: 0;
       transform: translate(1em, 0);
     }
-    @media (max-width: 385px){
+    @media (max-width: 385px) {
       font-size: 0.85rem;
     }
   }

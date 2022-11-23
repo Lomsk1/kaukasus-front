@@ -45,7 +45,6 @@ function SidebarRight({
       isApiSubscribed = false;
     };
   }, [dispatch]);
-  
 
   return (
     <Fragment>
@@ -249,6 +248,8 @@ const RightDivTitle = styled.div`
     margin: 0;
     color: #438945;
     font-weight: 700;
+    @import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+    font-family: "Poppins", sans-serif;
   }
   @media (max-width: 800px) {
     width: 50%;
@@ -264,6 +265,8 @@ const RightDivFirst = styled.div`
     font-size: 1.25rem;
     margin: 0;
     color: #438945;
+    @import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+    font-family: "Poppins", sans-serif;
   }
   @media (max-width: 800px) {
     width: 100%;

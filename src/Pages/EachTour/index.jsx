@@ -225,7 +225,7 @@ function EachTour() {
             {tourData && !isLoading && time && (
               <p>{tourData.Tour.description}</p>
             )}
-            <span>Highlight</span>
+            <span>Highlights</span>
             <ul>
               {highlightData &&
                 time &&
@@ -404,7 +404,7 @@ const InformationAboutCountry = styled.section`
     }
   }
   span {
-    font-size: 2rem;
+    font-size: 1.3rem;
     font-weight: 700;
   }
 `;
@@ -418,7 +418,7 @@ const Itinerary = styled.section`
   h2 {
     margin: 0;
     @media (max-width: 1400px){
-      font-size: 1.5rem;
+      font-size: 1.7rem;
     }
   }
 `;

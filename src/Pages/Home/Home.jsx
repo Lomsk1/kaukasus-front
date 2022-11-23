@@ -32,6 +32,7 @@ const Home = () => {
                 title={website.title}
                 image={website.image}
                 country={website.title}
+                description={website.description}
               />
             ))}
         </Page>

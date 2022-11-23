@@ -8,7 +8,7 @@ const Screenshot = styled.figure`
   margin: 0;
   padding: 0;
   height: 200px;
-  background: url(${props => props.image}) 0 0 no-repeat;
+  background: url(${(props) => props.image}) 0 0 no-repeat;
   background-size: cover;
   border-radius: 8px 8px 0 0;
   overflow: hidden;
@@ -35,18 +35,18 @@ const Content = styled.div`
 
 const Title = styled.span`
   display: block;
-  margin-bottom: 4px;
-  font-size: 1.25em;
-  font-weight: 500;
-  transition: all 0.45s ease;
-`;
-
-const Description = styled.span`
-  display: block;
   font-size: 0.875em;
   color: #999999;
   transition: all 0.45s ease;
   transition-delay: 0.04s;
+`;
+
+const Description = styled.span`
+  display: block;
+  margin-bottom: 4px;
+  font-size: 1.25em;
+  font-weight: 500;
+  transition: all 0.45s ease;
 `;
 
 const BottomBar = styled.span`
@@ -55,7 +55,7 @@ const BottomBar = styled.span`
   bottom: 0;
   width: 100%;
   height: 10px;
-  background: ${props => props.background && props.background};
+  background: ${(props) => props.background && props.background};
   border-radius: 0 0 8px 8px;
   transition: all 0.45s ease;
 `;
@@ -113,14 +113,24 @@ const Style = styled.button`
   }
 `;
 
-const Card = ({ hexa, title, description, image, country, main, about, id }) => (
+const Card = ({
+  hexa,
+  title,
+  description,
+  image,
+  country,
+  main,
+  about,
+  id,
+}) => (
   <Style>
     {main && (
       <Link to={`/${country}`}>
         <Screenshot image={image} />
         <Content>
-          <Title>{title}</Title>
           <Description>{description}</Description>
+          <Title>{title}</Title>
+
           <BottomBar background={hexa} />
         </Content>
       </Link>
@@ -129,8 +139,9 @@ const Card = ({ hexa, title, description, image, country, main, about, id }) => 
       <Link to={`/country_about/${id}`}>
         <Screenshot image={image} />
         <Content>
-          <Title>{title}</Title>
           <Description>{description}</Description>
+          <Title>{title}</Title>
+
           <BottomBar background={hexa} />
         </Content>
       </Link>
