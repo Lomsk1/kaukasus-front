@@ -40,6 +40,9 @@ const MainDiv = styled.div`
   @media (max-width: 1110px) {
     width: 95%;
   }
+  @media (max-width: 640px) {
+    margin: 0;
+  }
 `;
 const UpperDiv = styled.div`
   width: 100%;

@@ -1,17 +1,27 @@
 import styled from "styled-components";
 
-function TourDay({ day, city, url, description, distance, time, meals, overnight_stay, title }) {
+function TourDay({
+  day,
+  city,
+  url,
+  description,
+  distance,
+  time,
+  meals,
+  overnight_stay,
+  title,
+}) {
   return (
     <MainDiv>
       <DayDiv>
         <h1>
-        Tag {day}. {city}
+          Tag {day}. {title}
         </h1>
       </DayDiv>
 
-      <PhotoTitle>
+      {/* <PhotoTitle>
         {title}
-      </PhotoTitle>
+      </PhotoTitle> */}
 
       <PhotoDiv>
         <img src={process.env.REACT_APP_BASE_URL + url} alt='img not found' />
@@ -23,7 +33,7 @@ function TourDay({ day, city, url, description, distance, time, meals, overnight
 
       <Abbreviation>
         <p>
-        Fahrt - km: {distance}; Zeit: {time} Stunden
+          Fahrt - km: {distance}; Zeit: {time} Stunden
         </p>
         <p>Verpflegung: {meals}</p>
         <p>({overnight_stay})</p>
@@ -40,6 +50,7 @@ const MainDiv = styled.div`
   width: 100%;
   min-height: 20rem;
   height: max-content;
+
 `;
 const DayDiv = styled.div`
   margin-top: 1.5em;
@@ -94,7 +105,6 @@ const Abbreviation = styled.div`
   p {
     font-size: 1rem;
     margin: 0;
-
   }
 `;
 const Hr = styled.hr`

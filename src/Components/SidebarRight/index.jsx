@@ -15,10 +15,12 @@ function SidebarRight({
   close,
 }) {
   const [val, setVal] = useState(null);
+  const [val1, setVal1] = useState(null);
   const dispatch = useDispatch();
   const { tagData } = useSelector((state) => state.tag);
 
   const { register, handleSubmit } = useForm();
+
 
   useEffect(() => {
     let isApiSubscribed = true;
@@ -46,6 +48,30 @@ function SidebarRight({
     };
   }, [dispatch]);
 
+  const [general, setGeneral] = useState(false);
+
+  const generalHandler = () => {
+    setGeneral(!general);
+  };
+
+  const Information = () => {
+    if (tagData) {
+      return tagData.map((tag) => (
+        <Radio
+          key={tag.id}
+          label={tag.name}
+          topSize="1em"
+          value={tag.id}
+          onChange={(e) => {
+            setVal(e.target.value);
+            // console.log(e)
+          }}
+          onClick={close}
+        />
+      ));
+    }
+  };
+
   return (
     <Fragment>
       <SideBars>
@@ -55,26 +81,30 @@ function SidebarRight({
         <RightDivFirst>
           <h4>Reisesorte</h4>
         </RightDivFirst>
-        <RadioBoxes>
-          <Radio
+        <button className="sort_button" onClick={generalHandler}>
+          Reisesorte
+        </button>
+        <RadioBoxes style={{ display: general && "block" }}>
+          {/* <Radio
             label={"All Tours"}
             topSize="1em"
             value={""}
             onChange={allHandler}
-          />
+          /> */}
           <Radio
-            label={"Guaranteed"}
+            label={"Garantiert"}
             topSize="1em"
             value={""}
             onChange={guaranteed}
           />
           <Radio
-            label={"Not Guaranteed"}
+            label={"Keine Fixdaten"}
             topSize="1em"
             value={""}
             onChange={notGuaranteed}
           />
-          {tagData ? (
+          <Information />
+          {/* {tagData ? (
             tagData.map((tag) => (
               <Radio
                 key={tag.id}
@@ -83,13 +113,14 @@ function SidebarRight({
                 value={tag.id}
                 onChange={(e) => {
                   setVal(e.target.value);
+                  // console.log(e)
                 }}
                 onClick={close}
               />
             ))
           ) : (
             <div>Loading...</div>
-          )}
+          )} */}
         </RadioBoxes>
         <RightDivFirst size={"2em"}>
           <h4>Zeitraum</h4>
@@ -134,19 +165,19 @@ function SidebarRight({
         </form>
       </SideBars>
 
-      {minimal && (
+      {/* {minimal && (
         <Mini>
           <RightDivFirst>
             <h4>Reisesorte</h4>
           </RightDivFirst>
-          <RadioBoxes>
-            <Radio
+          <RadioBoxes> */}
+      {/* <Radio
               label={"All Tours"}
               topSize="1em"
               value={""}
               onChange={allHandler}
-            />
-            <Radio
+            /> */}
+      {/* <Radio
               label={"Guaranteed"}
               topSize="1em"
               value={""}
@@ -158,7 +189,8 @@ function SidebarRight({
               value={""}
               onChange={notGuaranteed}
             />
-            {tagData ? (
+            <Information /> */}
+      {/* {tagData ? (
               tagData.map((tag) => (
                 <Radio
                   key={tag.id}
@@ -166,14 +198,17 @@ function SidebarRight({
                   topSize="1em"
                   value={tag.id}
                   onChange={(e) => {
-                    setVal(e.target.value);
+                    // setVal(e.target.value);
+                    setVal1(e.target.value);
+                    console.log(e);
                   }}
+                  onClick={close}
                 />
               ))
             ) : (
               <div>Loading...</div>
-            )}
-          </RadioBoxes>
+            )} */}
+      {/* </RadioBoxes>
           <RightDivFirst size={"2em"}>
             <h4>Zeitraum</h4>
           </RightDivFirst>
@@ -209,7 +244,7 @@ function SidebarRight({
             <Button type="submit">Weiter</Button>
           </form>
         </Mini>
-      )}
+      )} */}
     </Fragment>
   );
 }
@@ -229,8 +264,37 @@ const SideBars = styled.div`
   position: sticky;
   right: 0;
   top: 40px;
+
+
   @media (max-width: 1000px) {
     width: 30%;
+    /* @media (max-width: 800px) {
+      display: none;
+    } */
+  }
+  @media (max-width: 800px) {
+    width: 100%;
+    /* min-height: 100vh; */
+    height: max-content;
+    display: flex;
+    flex-direction: column;
+    /* overflow: scroll; */
+    padding-bottom: 2em;
+    position: static;
+    top: 0;
+  }
+  .sort_button {
+    width: 100px;
+    height: 30px;
+    background-color: transparent;
+    border: 1px solid black;
+    border-radius: 10px;
+    cursor: pointer;
+
+    &:hover {
+      border-color: red;
+      transition: 700ms;
+    }
     @media (max-width: 800px) {
       display: none;
     }
@@ -251,10 +315,13 @@ const RightDivTitle = styled.div`
     @import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
     font-family: "Poppins", sans-serif;
   }
-  @media (max-width: 800px) {
+  /* @media (max-width: 800px) {
     width: 50%;
     display: flex;
     justify-content: center;
+  } */
+  @media (max-width: 800px) {
+    display: none;
   }
 `;
 const RightDivFirst = styled.div`
@@ -268,15 +335,19 @@ const RightDivFirst = styled.div`
     @import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
     font-family: "Poppins", sans-serif;
   }
-  @media (max-width: 800px) {
+  /* @media (max-width: 800px) {
     width: 100%;
     display: flex;
     justify-content: center;
+  } */
+  @media (max-width: 800px) {
+    display: none;
   }
 `;
 const RadioBoxes = styled.div`
   width: 80%;
   height: min-content;
+  display: none;
   @media (max-width: 800px) {
     width: 100%;
     display: flex;
@@ -325,10 +396,16 @@ const Button = styled.button`
     outline: 0;
   }
 
+  /* @media (max-width: 1400px) {
+  transform: translateY(-2em)
+  } */
+
   @media (max-width: 768px) {
-    font-size: 24px;
-    min-width: 196px;
+    font-size: 18px;
+    /* min-width: 196px; */
     margin: 0 auto;
+    width: 100px;
+  height: 50px;
   }
 `;
 const MainDiv = styled.div`
@@ -339,6 +416,7 @@ const MainDiv = styled.div`
   margin-top: ${(props) => props.marginTop || "0"};
   input {
     margin-left: 3em;
+    width: 150px;
     cursor: pointer;
   }
   label {

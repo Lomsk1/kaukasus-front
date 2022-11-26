@@ -40,7 +40,7 @@ function Georgia() {
   useEffect(() => {
     let isApiSubscribed = true;
     if (isApiSubscribed) {
-      setBgImg(webJson[2].image);
+      setBgImg(webJson[1].image);
     }
     return () => {
       isApiSubscribed = false;
@@ -181,7 +181,7 @@ function Georgia() {
       <Sidebar isOpen={isOpen} toggle={toggle} />
       <Navbar toggle={toggle} />
       {bgIMG ? (
-        <HeaderImgStatic description={"Azerbaijan"} image={bgIMG} />
+        <HeaderImgStatic description={"Azerbaidschan"} image={bgIMG} />
       ) : (
         <div>Loading...</div>
       )}
@@ -191,13 +191,24 @@ function Georgia() {
         {/* Burger Div */}
 
         <BurgerDiv>
-          <div onClick={leftClick}>
+          {/* <div onClick={leftClick}>
             <BarBurger />
           </div>
 
           <div onClick={rightClick}>
             <BarBurger />
-          </div>
+          </div> */}
+              {/* <SidebarRight
+                onSubmit={onSubmit}
+                allHandler={allTourHandler}
+                guaranteed={guaranteedTours}
+                notGuaranteed={notGuaranteedTours}
+                minimal
+                close={() => {
+                  setLeftOpen(false);
+                  setRightOpen(false);
+                }}
+              /> */}
         </BurgerDiv>
 
         {/* Imported Bars */}
@@ -302,6 +313,7 @@ function Georgia() {
               />
             ))
           ) : (
+            // <p>kein Tour gefunden</p>
             <p></p>
           )}
           {guaranteedOpen &&
@@ -364,7 +376,7 @@ const MainBar = styled.div`
   height: min-content;
   display: flex;
   flex-wrap: wrap;
-  overflow-y: scroll;
+  /* overflow-y: scroll; */
   @media (max-width: 1919px) {
     justify-content: space-evenly;
   }
@@ -378,10 +390,14 @@ const MainBar = styled.div`
 `;
 const BurgerDiv = styled.div`
   width: 100%;
-  height: 5rem;
+  /* height: 5rem; */
   display: flex;
   justify-content: space-between;
-  div {
+
+  /* background-color: brown; */
+  min-height: fit-content;
+
+  /* div {
     margin: 1em;
     width: 40px;
     height: 40px;
@@ -396,7 +412,7 @@ const BurgerDiv = styled.div`
       transform: rotate(180deg);
       transition: 700ms;
     }
-  }
+  } */
   @media (min-width: 800px) {
     display: none;
   }

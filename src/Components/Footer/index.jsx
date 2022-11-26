@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 import Facebook from "../../assets/icons/facebook";
 import Instagram from "../../assets/icons/instagram";
+import word from "../../assets/static/AGB.docx";
 
 function Footer() {
   return (
@@ -9,7 +10,7 @@ function Footer() {
       <MiddleDiv>
         <div className="up">
           <div className="quota">
-            <p>Kaukasus Reisen</p>
+            <p>Reiseziel Kaukasus</p>
             <p>
               <span>Entdecken, erleben, geniessen</span>
             </p>
@@ -17,7 +18,10 @@ function Footer() {
 
           <div className="social">
             <ul className="wrapper">
-              <a href="https://www.facebook.com/gia.liparteliani.7" target='_blank'>
+              <a
+                href="https://www.facebook.com/gia.liparteliani.7"
+                target="_blank"
+              >
                 <li className="icon facebook">
                   <Facebook />
                   <span className="tooltip">Facebook</span>
@@ -44,7 +48,16 @@ function Footer() {
                 </a>
               </p>
             </address>
-            <Link to={"/term"}>A G B</Link>
+            {/* <Link to={"/term"}>A G B</Link> */}
+            <a
+              href={
+                "https://drive.google.com/file/d/1DG3J3cntkZzeoTXKVf-vABM4wo5NdZlM/view?fbclid=IwAR30lGyjqtvOSDabJbbKw4gB1ekTXLMSH4yMFqa2kTwmnjTn87eKmNcYF_4"
+              }
+              target="_blank"
+            >
+              A G B
+            </a>
+            {/* <embed src={word} type="" /> */}
           </div>
         </div>
         <div className="down">
@@ -137,7 +150,7 @@ const MiddleDiv = styled.div`
       display: flex;
       justify-content: center;
       align-items: center;
-   
+
       place-items: center;
       /* background: linear-gradient(315deg, #ffffff, #d7e1ec); */
 

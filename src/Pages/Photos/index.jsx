@@ -33,7 +33,7 @@ function Photos() {
   }, [id]);
 
   const zoomOutProperties = {
-    duration: 8000,
+    duration: 20000,
     transitionDuration: 500,
     infinite: true,
     indicators: true,

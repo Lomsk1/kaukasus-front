@@ -1,13 +1,13 @@
 import styled from "styled-components";
 
-function Radio({ label, topSize, value, onChange,onClick }) {
+function Radio({ label, topSize, value, onChange, onClick }) {
   return (
     <Div marginTop={topSize}>
       <input
         id={label}
-        type='checkbox'
+        type="checkbox"
         defaultValue={value}
-        name='filter'
+        name="filter"
         onChange={onChange}
         onClick={onClick}
       />
@@ -23,16 +23,20 @@ const Div = styled.div`
   height: 1rem;
   display: flex;
   align-items: center;
-  margin-top: ${props => props.marginTop || "0"};
+  margin-top: ${(props) => props.marginTop || "0"};
   @media (max-width: 800px) {
-      width: max-content;
-      height: max-content;
-      min-height: 2rem;
+    width: fit-content;
+    height: fit-content;
+    /* min-height: 2rem; */
+    text-align: center;
   }
   input {
     margin-left: 3em;
     cursor: pointer;
     appearance: none;
+    @media (max-width: 800px) {
+      margin: 0;
+    }
   }
   label {
     margin-left: 1em;

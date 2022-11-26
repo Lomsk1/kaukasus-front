@@ -42,8 +42,14 @@ const Header = styled.header`
     position: absolute;
   }
   @media (max-width: 550px) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     h1 {
-      font-size: 2.5rem;
+      font-size: 2rem;
+      margin: 0;
+      width: fit-content;
+      transform: translate(0em, 0em);
     }
   }
 `;

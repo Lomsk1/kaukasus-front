@@ -36,7 +36,7 @@ export default TourBox;
 
 const MainDiv = styled.div`
   width: 280px;
-  height: 300px;
+  height: 350px;
   margin: 2em;
   display: flex;
   flex-direction: column;
@@ -47,7 +47,7 @@ const MainDiv = styled.div`
 
 const ImgDiv = styled.div`
   width: 100%;
-  height: 70%;
+  height: 65%;
   overflow: hidden;
   img {
     width: 100%;
@@ -57,10 +57,10 @@ const ImgDiv = styled.div`
 `;
 const TitleDiv = styled.div`
   width: 100%;
-  height: 15%;
+  height: 20%;
   p {
     color: #438945;
-    font-size: 1.4375rem;
+    font-size: 1.2rem;
     font-weight: 300;
     margin: 0;
     text-align: center;

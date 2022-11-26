@@ -4,6 +4,7 @@ import { Fragment } from "react";
 import { useParams } from "react-router-dom";
 import styled from "styled-components";
 import Footer from "../../Components/Footer";
+import HeaderImgStatic from "../../Components/Header/HeaderVol2";
 import Navbar from "../../Components/Navbar/Navbar";
 import Sidebar from "../../Components/Sidebar/Sidebar";
 import { webJson } from "../../Hoc/webJsons";
@@ -14,6 +15,18 @@ function AboutEachCountry() {
   const [web, setWeb] = useState([]);
   const { id } = useParams();
 
+  const [bg, setBg] = useState(null);
+
+  useEffect(() => {
+    let isApiSubscribed = true;
+    if (isApiSubscribed) {
+      setBg(webJson[id - 1]);
+    }
+    return () => {
+      isApiSubscribed = false;
+    };
+  }, [webJson]);
+  
   useEffect(() => {
     let isApiSubscribed = true;
     if (isApiSubscribed) {
@@ -51,11 +64,18 @@ function AboutEachCountry() {
     <Fragment>
       <Sidebar isOpen={isOpen} toggle={toggle} />
       <Navbar toggle={toggle} />
+
+      {bg ? (
+        <HeaderImgStatic description={bg.description} image={bg.image} />
+      ) : (
+        <div>Loading...</div>
+      )}
+      {/*       
       <UpperSection>
         <div className="middle">
           {web && time ? <h1>{web[0].title}</h1> : <div>Loading...</div>}
         </div>
-      </UpperSection>
+      </UpperSection> */}
 
       <TextSection>
         {aboutCountryData && time ? (

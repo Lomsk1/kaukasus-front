@@ -21,14 +21,11 @@ function AvatarRound({ name, lastName, src, description }) {
 export default AvatarRound;
 
 const MainDiv = styled.div`
-  width: 30%;
-  height: 25rem;
+  width: 15rem;
+  height: 15rem;
   display: flex;
   flex-direction: column;
   margin-top: 2em;
-  @media (max-width: 1450px) {
-    width: 25rem;
-  }
 `;
 const ImgDiv = styled.div`
   width: 100%;

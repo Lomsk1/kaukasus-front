@@ -31,16 +31,6 @@ function EachTour() {
   useEffect(() => {
     let isApiSubscribed = true;
     if (isApiSubscribed) {
-      console.log(tourData)
-    }
-    return () => {
-      isApiSubscribed = false;
-    };
-  }, [tourData]);
-
-  useEffect(() => {
-    let isApiSubscribed = true;
-    if (isApiSubscribed) {
       dispatch(
         getTourById({
           id: id,
@@ -248,7 +238,6 @@ function EachTour() {
                 title={tours.title}
                 description={tours.description}
                 url={tours.image}
-                city={tours.title}
                 time={tours.driveTime}
                 distance={tours.drivingKilometers}
                 meals={tours.meals}
@@ -273,7 +262,7 @@ function EachTour() {
                 <p>{serviceData[0].notedAchievements}</p>
               </Achivements>
               <Achivements>
-                <h2>NICHT begriffene Leistungen: ↴</h2>
+                <h2>Nicht inbegriffene Leistungen: ↴</h2>
                 <p>{serviceData[0].servicesNotRealized}</p>
               </Achivements>
             </ServiceInfo>

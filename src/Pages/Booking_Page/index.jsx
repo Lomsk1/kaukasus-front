@@ -108,7 +108,7 @@ function BookingPage() {
         )
         .then(
           (result) => {
-            alert("SUCCESS!", result.text);
+            alert("Nachricht  erfolgreich geschickt", result.text);
           },
           (error) => {
             alert("FAILED...", error);
@@ -157,6 +157,7 @@ function BookingPage() {
                   value={formik.values.firstName}
                   onChange={formik.handleChange}
                   onBlur={formik.handleBlur}
+                  required
                 />
                 <Input
                   placeholder={"Nachname"}
@@ -165,6 +166,7 @@ function BookingPage() {
                   value={formik.values.lastName}
                   onChange={formik.handleChange}
                   onBlur={formik.handleBlur}
+                  required
                 />
                 <Input
                   placeholder={"Telefonnummer"}
@@ -173,6 +175,7 @@ function BookingPage() {
                   value={formik.values.phone}
                   onChange={formik.handleChange}
                   onBlur={formik.handleBlur}
+                  required
                 />
                 <Input
                   placeholder={"E-mail"}
@@ -181,6 +184,7 @@ function BookingPage() {
                   value={formik.values.email}
                   onChange={formik.handleChange}
                   onBlur={formik.handleBlur}
+                  required
                 />
               </FormUpper>
               <FormDown>
@@ -191,12 +195,13 @@ function BookingPage() {
                   value={formik.values.regarding}
                   onChange={formik.handleChange}
                   onBlur={formik.handleBlur}
+                  required
                 />
 
                 {tourData.Tour && time ? (
                   <>
                     <label className="lab" htmlFor="tour">
-                      tour: {tourData.Tour.title}
+                      Tour: {tourData.Tour.title}
                     </label>
                     <Input
                       className={"inp"}
@@ -206,6 +211,7 @@ function BookingPage() {
                       onChange={formik.handleChange}
                       onBlur={formik.handleBlur}
                       value={tourData.Tour.title}
+                      required
                     />
                   </>
                 ) : (
@@ -219,6 +225,7 @@ function BookingPage() {
                       {`${BookingData.startDate} -- ${BookingData.endDate}`}
                     </label>
                     <Input
+                      required
                       className={"inp"}
                       name={"travelDate"}
                       id={"travelDate"}
@@ -238,10 +245,8 @@ function BookingPage() {
                   value={formik.values.otherInformation}
                   onChange={formik.handleChange}
                   onBlur={formik.handleBlur}
+                  required
                 />
-
-                <label htmlFor="participants">Anzahl Reiseteilnehmer</label>
-
                 <Input
                   value={formik.values.participants}
                   type={"number"}
@@ -250,6 +255,7 @@ function BookingPage() {
                   id="participants"
                   onChange={formik.handleChange}
                   onBlur={formik.handleBlur}
+                  required
                 />
 
                 <Input
@@ -259,6 +265,7 @@ function BookingPage() {
                   value={formik.values.singleRooms}
                   onChange={formik.handleChange}
                   onBlur={formik.handleBlur}
+                  required
                 />
 
                 <fieldset>
@@ -281,15 +288,24 @@ function BookingPage() {
                     name={"terms"}
                     type={"checkBox"}
                     onChange={(e) => setAgree(e.target.checked)}
+                    required
                   />
                   <label htmlFor="terms">
-                    <Link to={"/term"}>
+                    {/* <Link to={"/term"}>
                       Ich habe die AGBs gelesen und akzeptiert
-                    </Link>
+                    </Link> */}
+                    <a
+                      href={
+                        "https://drive.google.com/file/d/1DG3J3cntkZzeoTXKVf-vABM4wo5NdZlM/view?fbclid=IwAR30lGyjqtvOSDabJbbKw4gB1ekTXLMSH4yMFqa2kTwmnjTn87eKmNcYF_4"
+                      }
+                      target="_blank"
+                    >
+                      Ich habe die AGBs gelesen und akzeptiert
+                    </a>
                   </label>
                 </div>
                 {agree && time ? (
-                  <Button type={"submit"}>Submit</Button>
+                  <Button type={"submit"}>Senden</Button>
                 ) : (
                   <MainButton type={"submit"}>Not Allowed</MainButton>
                 )}

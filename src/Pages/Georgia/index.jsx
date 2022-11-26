@@ -148,7 +148,7 @@ function Georgia() {
     setGuaranteedTour(
       tourData.filter(
         (execution) =>
-          execution.execution === "Guaranteed" &&
+          execution.execution === "Garantiert" &&
           execution.countryName === "Georgia"
       )
     );
@@ -165,7 +165,7 @@ function Georgia() {
     setNotGuaranteedTour(
       tourData.filter(
         (execution) =>
-          execution.execution === "Not Guaranteed" &&
+          execution.execution === "Keine Fixdaten" &&
           execution.countryName === "Georgia"
       )
     );
@@ -193,13 +193,26 @@ function Georgia() {
         {/* Burger Div */}
 
         <BurgerDiv>
-          <div onClick={leftClick}>
+          {/* <div onClick={leftClick}>
             <BarBurger />
-          </div>
+          </div> */}
 
-          <div onClick={rightClick}>
-            <BarBurger />
-          </div>
+          {/* <div 
+          // onClick={rightClick}
+          > */}
+          {/* <BarBurger /> */}
+          {/* <SidebarRight
+            onSubmit={onSubmit}
+            allHandler={allTourHandler}
+            guaranteed={guaranteedTours}
+            notGuaranteed={notGuaranteedTours}
+            minimal
+            close={() => {
+              setLeftOpen(false);
+              setRightOpen(false);
+            }}
+          /> */}
+          {/* </div> */}
         </BurgerDiv>
 
         {/* Imported Bars */}
@@ -229,7 +242,7 @@ function Georgia() {
         )}
 
         {/* Right */}
-
+        {/* 
         {rightOpen && (
           <Module>
             <div className="x">
@@ -260,7 +273,7 @@ function Georgia() {
               />
             </div>
           </Module>
-        )}
+        )} */}
 
         {/* Main Bar */}
 
@@ -304,7 +317,8 @@ function Georgia() {
               />
             ))
           ) : (
-            <p>Loading ...</p>
+            // <p>kein Tour gefunden</p>
+            <p></p>
           )}
           {guaranteedOpen && !some && guaranteedTour ? (
             guaranteedTour.map((tour) => (
@@ -338,12 +352,14 @@ function Georgia() {
           )}
         </MainBar>
 
-        <SidebarRight
-          onSubmit={onSubmit}
-          allHandler={allTourHandler}
-          guaranteed={guaranteedTours}
-          notGuaranteed={notGuaranteedTours}
-        />
+        {/* <Hidden> */}
+          <SidebarRight
+            onSubmit={onSubmit}
+            // allHandler={allTourHandler}
+            guaranteed={guaranteedTours}
+            notGuaranteed={notGuaranteedTours}
+          />
+        {/* </Hidden> */}
       </MainSection>
 
       <Footer />
@@ -353,13 +369,21 @@ function Georgia() {
 
 export default Georgia;
 
+// const Hidden = styled.div`
+//  width: 20%;
+//   height: 100vh;
+//   @media (max-width: 800px) {
+//     display: none;
+//   }
+// `;
+
 const MainSection = styled.section`
   width: 100%;
   min-height: 150vh;
   background-color: #cfeaf6;
   display: flex;
   @media (max-width: 800px) {
-    flex-direction: column;
+    flex-direction: column-reverse;
     height: max-content;
   }
 `;
@@ -383,10 +407,14 @@ const MainBar = styled.div`
 `;
 const BurgerDiv = styled.div`
   width: 100%;
-  height: 5rem;
+  /* height: 5rem; */
   display: flex;
   justify-content: space-between;
-  div {
+
+  /* background-color: brown; */
+  min-height: fit-content;
+
+  /* div {
     margin: 1em;
     width: 40px;
     height: 40px;
@@ -401,7 +429,7 @@ const BurgerDiv = styled.div`
       transform: rotate(180deg);
       transition: 700ms;
     }
-  }
+  } */
   @media (min-width: 800px) {
     display: none;
   }

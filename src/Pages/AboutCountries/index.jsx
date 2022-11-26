@@ -30,6 +30,7 @@ function AboutCountries() {
               description={website.description}
               image={website.image}
               country={website.title}
+              links={website.links}
             />
           ))}
       </MainSection>

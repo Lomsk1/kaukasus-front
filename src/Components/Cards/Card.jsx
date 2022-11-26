@@ -122,20 +122,38 @@ const Card = ({
   main,
   about,
   id,
-}) => (
-  <Style>
-    {main && (
-      <Link to={`/${country}`}>
-        <Screenshot image={image} />
-        <Content>
-          <Description>{description}</Description>
-          <Title>{title}</Title>
+  links
+}) => {
+  // const links = () => {
+  //   let lin = "";
+  //   if (id === 1) {
+  //     lin =
+  //       "https://drive.google.com/file/d/1SH7_G9HNC5kWpjulDLGATzf3Lkjha6Fd/view?fbclid=IwAR2PC5eppY5e0fZRCM3ffsJSyWXkmwLbtRXowC-Hd-kBaJ2cdC9o20hiHbQ";
+  //   }
+  //   if (id === 2) {
+  //     return "https://drive.google.com/file/d/1l_x4FISWIIBS1xjfuNf4HxNDStQDKbz3/view?fbclid=IwAR3wYDg_vNLbxKbegFzGksaTJYc0Y80YDk5WiTQAVElQ9ylMouLByhJ_ZU0";
+  //   }
+  //   if (id === 3) {
+  //     return "https://drive.google.com/file/d/1_n4n6VaF5ItfIcuvgI09LvFUgKPKiryB/view?fbclid=IwAR0Dz5Pj3U3_vtcl0s_sEQNuTVzO1YGj5o0PcRAskiTHox8fTk76ddLxHiI";
+  //   }
 
-          <BottomBar background={hexa} />
-        </Content>
-      </Link>
-    )}
-    {about && (
+  //   return lin;
+  // };
+
+  return (
+    <Style>
+      {main && (
+        <Link to={`/${country}`}>
+          <Screenshot image={image} />
+          <Content>
+            <Description>{description}</Description>
+            <Title>{title}</Title>
+
+            <BottomBar background={hexa} />
+          </Content>
+        </Link>
+      )}
+      {/* {about && (
       <Link to={`/country_about/${id}`}>
         <Screenshot image={image} />
         <Content>
@@ -145,8 +163,20 @@ const Card = ({
           <BottomBar background={hexa} />
         </Content>
       </Link>
-    )}
-  </Style>
-);
+    )} */}
+      {about && (
+        <a href={links} target="_blank">
+          <Screenshot image={image} />
+          <Content>
+            <Description>{description}</Description>
+            <Title>{title}</Title>
+
+            <BottomBar background={hexa} />
+          </Content>
+        </a>
+      )}
+    </Style>
+  );
+};
 
 export default Card;

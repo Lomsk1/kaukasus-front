@@ -34,18 +34,20 @@ function PhotoBlog() {
             <p>Meine Reisen in Bildern</p>
             <span>Foto-Erzählungen von Giorgi Liparteliani</span>
           </MomentsDiv>
-          {!isLoading &&
-            photoData.map((photo) => {
-              return (
-                <PhotoBox
-                  key={photo.id}
-                  url={photo.image}
-                  title={photo.title}
-                  description={photo.description}
-                  id={photo.id}
-                />
-              );
-            })}
+          <div className="direction">
+            {!isLoading &&
+              photoData.map((photo) => {
+                return (
+                  <PhotoBox
+                    key={photo.id}
+                    url={photo.image}
+                    title={photo.title}
+                    description={photo.description}
+                    id={photo.id}
+                  />
+                );
+              })}
+          </div>
         </Div>
       </MainSection>
 
@@ -68,6 +70,11 @@ const MainSection = styled.section`
   background-repeat: repeat;
   background-attachment: fixed;
   @import url("https://fonts.googleapis.com/css2?family=Dosis:wght@200&display=swap");
+  
+  .direction{
+    display: flex;
+    flex-direction: column-reverse;
+  }
 `;
 const Div = styled.div`
   margin-top: 4em;
@@ -91,7 +98,7 @@ const MomentsDiv = styled.div`
     width: 95%;
   }
   @media (max-width: 660px) {
-    height: 10rem;
+    height: 15rem;
   }
   p {
     font-family: "Dosis", sans-serif;

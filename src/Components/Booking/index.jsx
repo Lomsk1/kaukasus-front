@@ -50,6 +50,10 @@ const Table = styled.table`
   text-align: center;
   background-color: #e0e0d8;
   margin-top: 2em;
+
+  @media (max-width:900px){
+    width: 100%;
+  }
   &,
   th,
   td {
