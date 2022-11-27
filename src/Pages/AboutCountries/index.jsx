@@ -28,7 +28,7 @@ function AboutCountries() {
               hexa={website.hexa}
               title={website.title}
               description={website.description}
-              image={website.image}
+              image={website.flags}
               country={website.title}
               links={website.links}
             />

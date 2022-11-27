@@ -67,7 +67,7 @@ const Table = styled.table`
     }
   }
   img {
-    width: 50px;
-    height: 50px;
+    width: 90px;
+    height: 70px;
   }
 `;

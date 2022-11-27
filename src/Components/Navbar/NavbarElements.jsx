@@ -19,6 +19,19 @@ export const Nav = styled.nav`
   @media screen and (max-width: 960px) {
     transition: 0.8s all ease;
   }
+  a {
+    color: #fff;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    padding: 0 1rem;
+    height: 100%;
+    cursor: pointer;
+
+    &.active {
+      border-bottom: 3px solid #01bf71;
+    }
+  }
 `;
 export const NavbarContainer = styled.div`
   display: flex;
@@ -60,13 +73,13 @@ export const LogoItem = styled.div`
   width: fit-content;
   height: 100%;
   transform: translateX(-10em);
-  @media (max-width: 1530px){
+  @media (max-width: 1530px) {
     transform: translateX(-5em);
   }
-  @media (max-width: 1270px){
+  @media (max-width: 1270px) {
     transform: translateX(-2em);
   }
-  @media (max-width: 1150px){
+  @media (max-width: 1150px) {
     transform: translateX(0em);
   }
   img {

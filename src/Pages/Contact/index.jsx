@@ -126,13 +126,12 @@ function Contact() {
                 />
               </div>
               <textarea
-                placeholder="z.B. ich bin Vegetarianer(in),ich trinke keinen Alkohol, etc."
                 name={"someText"}
                 value={formik.values.someText}
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
               />
-              <Button type={"submit"}>Submit</Button>
+              <Button type={"submit"}>Senden</Button>
             </form>
           </DownLeftDiv>
         </LeftDiv>

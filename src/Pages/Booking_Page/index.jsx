@@ -280,7 +280,7 @@ function BookingPage() {
                     <div>Loading...</div>
                   )}
 
-                  <span>*diese Felder bitte ausfüllen.</span>
+                  <span>*Bitte, alle Felder ausfüllen. Wenn Sie kein Einzelzimmer brauchen, geben Sie da 0 (Null) ein.</span>
                 </fieldset>
 
                 <div>

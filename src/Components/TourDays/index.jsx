@@ -15,7 +15,7 @@ function TourDay({
     <MainDiv>
       <DayDiv>
         <h1>
-          Tag {day}. {title}
+          Tag {day}. <span>{title}</span>
         </h1>
       </DayDiv>
 
@@ -60,7 +60,11 @@ const DayDiv = styled.div`
   min-height: 4rem;
   h1 {
     margin: 0;
-    font-size: 1.5rem;
+    font-size: 1.3rem;
+  }
+  span{
+    font-size: 1.1rem;
+    font-weight: 400;
   }
 `;
 const PhotoTitle = styled.div`
@@ -94,7 +98,7 @@ const Description = styled.div`
   min-height: 5rem;
   text-align: justify;
   p {
-    font-size: 1.2rem;
+    font-size: 1rem;
   }
 `;
 
@@ -103,7 +107,7 @@ const Abbreviation = styled.div`
   min-height: 5rem;
   height: max-content;
   p {
-    font-size: 1rem;
+    font-size: 0.9rem;
     margin: 0;
   }
 `;

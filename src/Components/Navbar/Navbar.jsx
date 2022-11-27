@@ -7,20 +7,22 @@ import {
   NavItem,
   NavLinks,
   NavLinksR,
-  LogoItem
+  LogoItem,
 } from "./NavbarElements";
 import { FaBars } from "react-icons/fa";
 import logo from "../../assets/images/logo.png";
 import { useNavigate } from "react-router-dom";
 
 const Navbar = ({ toggle, homePage }) => {
-  const navigate  = useNavigate()
+  const navigate = useNavigate();
   return (
     <>
       <Nav>
-        <LogoItem onClick={()=>{
-          navigate('/')
-        }}>
+        <LogoItem
+          onClick={() => {
+            navigate("/");
+          }}
+        >
           <img src={logo} alt="" />
         </LogoItem>
         <NavbarContainer>
@@ -56,7 +58,12 @@ const Navbar = ({ toggle, homePage }) => {
               <NavLinksR to="/about_countries">Über drei Länder</NavLinksR>
             </NavItem>
             <NavItem>
-              <NavLinksR to="/servicess">unsere service</NavLinksR>
+              {/* <NavLinksR to="/servicess">unsere service</NavLinksR> */}
+              <a href="https://drive.google.com/file/d/15XTpVYP6kzhG0WhUFfRqDD696HySwE3z/view?fbclid=IwAR0neVjMCKUH38uFCjfHBM4n1b9nUp6nMF_2xlmsFo_OCayug9AB2s7KVoI"
+              target='_blank'
+              >
+                unsere service
+              </a>
             </NavItem>
           </NavMenu>
         </NavbarContainer>

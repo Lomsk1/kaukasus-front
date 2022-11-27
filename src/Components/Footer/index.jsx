@@ -62,7 +62,7 @@ function Footer() {
         </div>
         <div className="down">
           <p>
-            © 2022 Kaukasus-Travel. SeedCats, Georgia, Tbilisi. All Rights
+            © 2022 Reiseziel Kaukasus. SeedCats, Georgia, Tbilisi. All Rights
             Reserved
           </p>
         </div>

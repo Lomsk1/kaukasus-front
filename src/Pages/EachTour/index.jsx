@@ -258,11 +258,11 @@ function EachTour() {
           {serviceData.length > 0 && time ? (
             <ServiceInfo>
               <Achivements>
-                <h2>Begriffene Leistungen: ↴ </h2>
+                <h2>Unsere Leistungen: ↴ </h2>
                 <p>{serviceData[0].notedAchievements}</p>
               </Achivements>
               <Achivements>
-                <h2>Nicht inbegriffene Leistungen: ↴</h2>
+                <h2>NICHT inbegriffene Leistungen: ↴</h2>
                 <p>{serviceData[0].servicesNotRealized}</p>
               </Achivements>
             </ServiceInfo>

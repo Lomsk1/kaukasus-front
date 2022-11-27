@@ -20,7 +20,7 @@ function TourBox({ url, price, duration, title, id }) {
           </TitleDiv>
           <PriceDiv>
             <div>
-              <BsFillClockFill />
+              <BsFillClockFill className="ss" />
               <p>{duration} Tage</p>
             </div>
             <div>
@@ -60,7 +60,7 @@ const TitleDiv = styled.div`
   height: 20%;
   p {
     color: #438945;
-    font-size: 1.2rem;
+    font-size: 1rem;
     font-weight: 300;
     margin: 0;
     text-align: center;
@@ -72,15 +72,18 @@ const PriceDiv = styled.div`
   height: 15%;
   display: flex;
   justify-content: space-evenly;
+  .ss{
+    transform: translateX(-0.5em);
+  }
   div {
-    width: 30%;
+    width: fit-content;
     height: 100%;
     display: flex;
     justify-content: space-evenly;
     align-items: center;
     p {
       color: hsl(170, 39%, 12%);
-      font-size: 1.125rem;
+      font-size: 0.9rem;
       margin: 0;
     }
   }

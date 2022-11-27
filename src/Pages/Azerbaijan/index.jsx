@@ -147,7 +147,7 @@ function Georgia() {
     setGuaranteedTour(
       tourData.filter(
         (execution) =>
-          execution.execution === "Guaranteed" &&
+          execution.execution === "Garantiert" &&
           execution.countryName === "Georgia"
       )
     );
@@ -164,7 +164,7 @@ function Georgia() {
     setNotGuaranteedTour(
       tourData.filter(
         (execution) =>
-          execution.execution === "Not Guaranteed" &&
+          execution.execution === "Keine Fixdaten" &&
           execution.countryName === "Georgia"
       )
     );
@@ -366,7 +366,7 @@ const MainSection = styled.section`
   background-color: #cfeaf6;
   display: flex;
   @media (max-width: 800px) {
-    flex-direction: column;
+    flex-direction: column-reverse;
     height: max-content;
   }
 `;

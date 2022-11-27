@@ -21,7 +21,6 @@ function SidebarRight({
 
   const { register, handleSubmit } = useForm();
 
-
   useEffect(() => {
     let isApiSubscribed = true;
     if (isApiSubscribed) {
@@ -82,7 +81,7 @@ function SidebarRight({
           <h4>Reisesorte</h4>
         </RightDivFirst>
         <button className="sort_button" onClick={generalHandler}>
-          Reisesorte
+          zu Reisesorten
         </button>
         <RadioBoxes style={{ display: general && "block" }}>
           {/* <Radio
@@ -92,17 +91,17 @@ function SidebarRight({
             onChange={allHandler}
           /> */}
           <Radio
-            label={"Garantiert"}
+            label={"Garantierte Reisen"}
             topSize="1em"
             value={""}
             onChange={guaranteed}
           />
-          <Radio
+          {/* <Radio
             label={"Keine Fixdaten"}
             topSize="1em"
             value={""}
             onChange={notGuaranteed}
-          />
+          /> */}
           <Information />
           {/* {tagData ? (
             tagData.map((tag) => (
@@ -265,7 +264,6 @@ const SideBars = styled.div`
   right: 0;
   top: 40px;
 
-
   @media (max-width: 1000px) {
     width: 30%;
     /* @media (max-width: 800px) {
@@ -284,8 +282,8 @@ const SideBars = styled.div`
     top: 0;
   }
   .sort_button {
-    width: 100px;
-    height: 30px;
+    width: 150px;
+    height: 40px;
     background-color: transparent;
     border: 1px solid black;
     border-radius: 10px;
@@ -303,14 +301,14 @@ const SideBars = styled.div`
 
 const RightDivTitle = styled.div`
   width: 80%;
-  height: 5rem;
+  height: 3rem;
   margin-top: 2em;
   position: sticky;
 
   h3 {
-    font-size: 2rem;
+    font-size: 1.17rem;
     margin: 0;
-    color: #438945;
+    color: #031805;
     font-weight: 700;
     @import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
     font-family: "Poppins", sans-serif;
@@ -329,9 +327,9 @@ const RightDivFirst = styled.div`
   height: 3rem;
   margin-top: ${(props) => props.size};
   h4 {
-    font-size: 1.25rem;
+    font-size: 1rem;
     margin: 0;
-    color: #438945;
+    color: #031805;
     @import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
     font-family: "Poppins", sans-serif;
   }
@@ -359,13 +357,14 @@ const RadioBoxes = styled.div`
 
 const CalendarDiv = styled.div`
   width: 80%;
-  height: 5rem;
+  height: 3rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
   @media (max-width: 800px) {
     width: 100%;
     align-items: center;
+    height: 5rem;
   }
 `;
 const Button = styled.button`
@@ -405,7 +404,7 @@ const Button = styled.button`
     /* min-width: 196px; */
     margin: 0 auto;
     width: 100px;
-  height: 50px;
+    height: 50px;
   }
 `;
 const MainDiv = styled.div`
