@@ -80,9 +80,9 @@ function AboutEachCountry() {
       <TextSection>
         {aboutCountryData && time ? (
           <div className="middle">
-            <h2>{aboutCountryData[0].title}</h2>
+            <h2>{aboutCountryData && aboutCountryData[0].title}</h2>
             <hr />
-            <p>{aboutCountryData[0].description}</p>
+            <p>{aboutCountryData && aboutCountryData[0].description}</p>
           </div>
         ) : (
           <div>Loading...</div>

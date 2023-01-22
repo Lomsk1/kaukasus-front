@@ -57,14 +57,9 @@ const Navbar = ({ toggle, homePage }) => {
             <NavItem>
               <NavLinksR to="/about_countries">Über drei Länder</NavLinksR>
             </NavItem>
-            <NavItem>
-              {/* <NavLinksR to="/servicess">unsere service</NavLinksR> */}
-              <a href="https://drive.google.com/file/d/15XTpVYP6kzhG0WhUFfRqDD696HySwE3z/view?fbclid=IwAR0neVjMCKUH38uFCjfHBM4n1b9nUp6nMF_2xlmsFo_OCayug9AB2s7KVoI"
-              target='_blank'
-              >
-                unsere service
-              </a>
-            </NavItem>
+            {/* <NavItem>
+              <NavLinksR to="/servicess">unsere service</NavLinksR>
+            </NavItem> */}
           </NavMenu>
         </NavbarContainer>
       </Nav>

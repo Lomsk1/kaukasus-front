@@ -8,7 +8,7 @@ export const Header = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: space-evenly;
-  background-image: url("https://scontent.ftbs4-2.fna.fbcdn.net/v/t1.6435-9/186137364_4066958170048490_4766400312025349744_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=730e14&_nc_eui2=AeEqrKuHm4JIRNZxUZOGoonCTQIUlJtU8_hNAhSUm1Tz-Lb288aQNVeQjhDb-ETP4J0P7PhWI1VFp4Kjkrf7rT5k&_nc_ohc=hmbQEuBY0j4AX81gJOd&_nc_ht=scontent.ftbs4-2.fna&oh=00_AfBEs_woUuPIQcbrC0qBD8efPlnTWVLdPrBgV1lqSKJ04A&oe=63A58367");
+  background-image: url("https://ichef.bbci.co.uk/images/ic/1200x675/p01lymgh.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   @media (max-width: 1070px) {

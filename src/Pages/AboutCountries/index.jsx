@@ -69,7 +69,7 @@ const Page = styled.div`
 const MainSection = styled.section`
   width: 100%;
   min-height: 100vh;
-  background-image: url('https://scontent.ftbs6-2.fna.fbcdn.net/v/t39.30808-6/307640663_5575439982533627_8125389910762616887_n.jpg?stp=dst-jpg_p180x540&_nc_cat=111&ccb=1-7&_nc_sid=730e14&_nc_eui2=AeF6432Q5OYsk31jIA-n7a4_kEtVQb1Wg66QS1VBvVaDrofvg0N9KjcQud9Ym-_A2ZtmzHC-Qc37py7fezw1B_WO&_nc_ohc=HP2jweWVJUAAX-_vIV3&_nc_ht=scontent.ftbs6-2.fna&oh=00_AfDTdmV93vaJgfKqH8UCPd4xYCjHkTgVjiVSjsCYVixdxg&oe=6387CC0B');
+  background-image: url('https://natureconservancy-h.assetsadobe.com/is/image/content/dam/tnc/nature/en/photos/Zugpsitze_mountain.jpg?crop=0%2C176%2C3008%2C1654&wid=4000&hei=2200&scl=0.752');
   background-repeat: no-repeat;
   background-size: cover;
   display: flex;

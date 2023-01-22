@@ -27,12 +27,17 @@ function PhotoBlog() {
     <Fragment>
       <Sidebar isOpen={isOpen} toggle={toggle} />
       <Navbar toggle={toggle} />
-      <HeaderImgStatic description={"FOTO BLOG"} image={headerImage} />
+      <HeaderImgStatic
+        description={"FOTO BLOG"}
+        image={
+          "https://static.toiimg.com/thumb/msid-92233948,width-1070,height-580,resizemode-75/92233948,pt-32,y_pad-40/92233948.jpg"
+        }
+      />
       <MainSection>
         <Div>
           <MomentsDiv>
             <p>Meine Reisen in Bildern</p>
-            <span>Foto-Erzählungen von Giorgi Liparteliani</span>
+            <span>Foto-Erzählungen von Name LastName</span>
           </MomentsDiv>
           <div className="direction">
             {!isLoading &&
@@ -70,8 +75,8 @@ const MainSection = styled.section`
   background-repeat: repeat;
   background-attachment: fixed;
   @import url("https://fonts.googleapis.com/css2?family=Dosis:wght@200&display=swap");
-  
-  .direction{
+
+  .direction {
     display: flex;
     flex-direction: column-reverse;
   }

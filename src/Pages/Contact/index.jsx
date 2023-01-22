@@ -39,22 +39,22 @@ function Contact() {
     },
     validationSchema: contactValidationSchema,
     onSubmit: (values, { resetForm }) => {
-      emailjs
-        .send(
-          "service_umwqlh9",
-          "template_umvlr8d",
-          values,
-          "N8cGP1mMl7m41xPY4"
-        )
-        .then(
-          (result) => {
-            alert("SUCCESS!", result.text);
-          },
-          (error) => {
-            alert("FAILED...", error);
-          }
-        );
-      resetForm();
+      // emailjs
+      //   .send(
+      //     "service_umwqlh9",
+      //     "template_umvlr8d",
+      //     values,
+      //     "N8cGP1mMl7m41xPY4"
+      //   )
+      //   .then(
+      //     (result) => {
+      //       alert("SUCCESS!", result.text);
+      //     },
+      //     (error) => {
+      //       alert("FAILED...", error);
+      //     }
+      //   );
+      // resetForm();
     },
   });
 
@@ -137,11 +137,9 @@ function Contact() {
         </LeftDiv>
         <RightDiv>
           <address>
-            <div className="head">Tel: +995 599 495 595</div>
-            <div className="middle">Mail: reisezielkaukasus@gamil.com</div>
-            <div className="down">
-              Address: M.Khergianis St.N14, Lentekhi, 2900
-            </div>
+            <div className="head">Tel: +995 599 391 080</div>
+            <div className="middle">Mail: mail@mail.com</div>
+            <div className="down">Address: Tbilisi</div>
           </address>
         </RightDiv>
       </MainSection>
@@ -160,7 +158,7 @@ const MainSection = styled.section`
   flex-direction: column;
   background-color: #cfeaf6;
   /* margin-top: 5em; */
-    margin-top: 2em;
+  margin-top: 2em;
 
   @media (max-width: 1366px) {
     flex-direction: column;

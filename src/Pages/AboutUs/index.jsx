@@ -39,75 +39,60 @@ function About() {
         <UpperDesc>
           <ImgDiv>
             <div>
-              <img src={gia} alt="Ushba und Elbrus" />
+              <img
+                src="https://cdn.pixabay.com/photo/2013/07/13/10/07/man-156584__340.png"
+                alt=""
+              />
             </div>
           </ImgDiv>
           <TextDiv>
-            <h4>Über ,,Reiseziel-Kaukasus,, und seinen Gründer</h4>
+            <h4>Lorem ipsum dolor sit amet</h4>
             <p>
-              Mit dem Sitz in Unteren Svanetien im Georgien ist
-              Reiseziel-Kaukasus, ein deutschsprachiges Reisebüro, das in allen
-              drei Ländern von Kaukasus Georgien, Armenien und Aserbaidschan
-              operiert (mit Schwerpunkt Georgien). Die Reisearte, was das Büro
-              anbietet ist umfangreich und umfasst Kultur-Wandern -und
-              Abenteuerreisen sowohl für die Gruppen als auch für individuelle
-              Reisenden, Selbstfahrer oder andere Leute, die die Region
-              entdecken, erleben und genießen wollen. Dank der tiefen
-              Zusammenarbeit mit unseren Partnern in Armenien und Aserbaidschan
-              und mit der Hilfe einheimischen Reiseleiter ermöglichen wir
-              unseren Gästen auch die Nachbarländer Georgiens tief und nah zu
-              erkundigen. Zuverlässigkeit, Flexibilität und Qualität, das sind
-              worauf unsere Tätigkeit und Geschäft aufgebaut ist. Der Gründer
-              und Inhaber des Unternehmens bin ich - Giorgi Liparteliani. Nach 8
-              jährlichen Erfahrung als Kultur – Wandern - und Foto Reiseführer,
-              bin ich die Entscheidung getroffen, ein Reisebüro zu gründen.
-              Bevor ich in den touristischen Bereich ging, habe ich drei Jahre
-              lang als Beamter an einem Ministerium gearbeitet (beruflich bin
-              ich Jurist). Weil die Arbeit nicht meines Charakters war und mein
-              Hobby wandern und Reise war, habe ich entschieden Arbeitsbereich
-              zu wechseln und mein Hobby in meiner Tätigkeit zu verwandeln. So
-              bin ich 2014 auf den Tourismus gelandet. Ich habe eine Schulung
-              für Reiseführer gemacht und bin ich das Mitglied des Bundes der
-              Georgieschen Reiseführer geworden (Assoziation of Georgien
-              Guides). Meine Tätigkeit als Wandern – Kultur - und Foto guide hat
-              mir eine große Erfahrung im Tourismus gegeben und ermöglichte mir
-              persönliche Kontakte mit sehr vielen interessanten Leuten
-              aufzubauen. Ich, als Reisführer bin sehr stolz darauf, dass ich
-              einige Male angefragt wurde, europäische Politiker und Mitglieder
-              einer politischen Delegation, die das Land besuchten, durch die
-              Stadt zu führen. Fotografie ist auch ein Teil meines Lebens. Ich
-              fotografiere viel und habe schon einige Wettbewerbe gewonnen.
-              Darunter war die wichtigste Auszeichnung ,,the best travel
-              photographer oft he year 2017,,. Unter ,,Foto Blog,, finden Sie
-              meine Foto – Erzählungen.
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel
+              alias, tenetur laborum molestiae, explicabo hic non omnis fuga
+              quo, tempora reiciendis reprehenderit. Quos labore itaque
+              accusantium necessitatibus, ducimus voluptate sunt laboriosam,
+              nisi recusandae fugit est asperiores omnis cupiditate consequuntur
+              aspernatur tenetur eligendi vero assumenda libero. Voluptatibus in
+              mollitia sapiente, natus minus enim, at incidunt voluptates
+              asperiores inventore quaerat? Est pariatur amet natus quam ipsa.
+              Autem doloribus a, voluptatem reprehenderit distinctio nesciunt
+              impedit quia ipsum itaque perspiciatis quas, totam ut odit eaque
+              porro pariatur facere, quis tempora blanditiis aliquid? Veniam
+              nulla sequi officia quo illum corrupti, rerum cupiditate nobis,
+              possimus fugit reiciendis dolorem enim. Accusamus, ipsum error in,
+              veritatis, possimus soluta recusandae aliquam magni sunt atque
+              doloremque nesciunt debitis delectus vero perspiciatis ducimus
+              nemo quibusdam! Quisquam architecto hic, voluptate quod saepe
+              doloremque tempore iste quidem laborum voluptatum minima natus
+              esse sequi ipsam officia, est labore placeat, animi possimus
+              incidunt aut velit.
             </p>
           </TextDiv>
           <TextDiv>
-            <h4>Wir über uns / Unsere Mission</h4>
+            <h4>Lorem ipsum dolor sit amet</h4>
             <p>
-              Das Reiseunternehmen hat sich zum Ziel gestellt, dass alle Gäste
-              eine unvergessliche Zeit mit tollen Erinnerungen im wunderschönen
-              Georgien verbringen. Dabei ist es uns besonders wichtig, unser
-              Land so zu zeigen, wie es wirklich ist: Atemberaubende
-              Landschaften, traditionsreiche Kunst und Kultur, kulinarische
-              Werte, die interessante Geschichte sowie die außergewöhnliche
-              Herzlichkeit und Gastfreundschaft der Bevölkerung. Durch die
-              jahrzehntelange Zugehörigkeit zur Sowjetunion ist in der
-              westlichen Welt ein falsches Bild von Georgien entstanden. Das
-              wollen wir ändern. Wir haben z.B. unsere eigene Sprache, eigene
-              Schriftzeichen und auch unsere Geschichte wurde nie vergessen. Als
-              Reiseveranstalter wollen wir unseren Beitrag leisten, unser Land
-              Georgien wirtschaftlich voran zu bringen, denn die Landwirtschaft
-              und der Tourismus sind die Haupteinnahmequellen in dieser Zeit.
-              Mit unseren Erkundungstouren sind wir auf den Spuren unserer
-              Vorfahren unterwegs und entdecken viele Bereiche wie Wirtschaft,
-              Wissenschaft, Architektur und Kultur wieder neu. Wir sind stolz,
-              als kleines Unternehmen, unseren Beitrag zur Entwicklung unseres
-              Landes beizutragen und Georgien den deutsch sprechenden Gästen
-              vorzustellen. Viele Touristen packt hoffentlich das
-              „Georgienfieber“ und sie kommen immer wieder in das vielseitige
-              und sehenswerte Land. Dies erfüllt uns mit riesiger Freude und ist
-              unser größter Dank.
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima
+              molestiae maxime laborum dolor delectus eaque assumenda iusto
+              deserunt veritatis magni, quasi, ducimus dolorum exercitationem
+              explicabo! Vel expedita molestiae velit officia possimus.
+              Excepturi minus nemo autem cupiditate velit nesciunt reprehenderit
+              hic, illum quia, possimus omnis magnam quod. Dignissimos
+              quibusdam, nesciunt rerum, voluptatem blanditiis labore expedita
+              eligendi perspiciatis iste asperiores porro deleniti, iure autem
+              repellendus velit consequatur mollitia officia facere sit! Minima
+              nostrum quasi earum error rerum eos, doloribus perspiciatis iusto
+              ipsa accusantium. Dolor nostrum eos vero ea, earum deleniti iure
+              blanditiis impedit dicta? Ipsa a labore in hic laudantium
+              quibusdam dolorem possimus voluptas natus reprehenderit ab,
+              voluptatum eos tempore nemo quod error vitae, laboriosam unde
+              culpa quis molestias quos numquam officiis tenetur! Voluptate odit
+              neque dolores rerum quasi recusandae, vel illo ullam, placeat
+              similique, sunt fugit labore doloremque nemo soluta impedit
+              numquam perspiciatis reiciendis cupiditate eaque doloribus
+              consectetur. Aspernatur, qui quia quas inventore ex quam in minima
+              laborum repellat. Odio fugiat, quidem rerum asperiores ullam
+              voluptatum itaque sunt! Officiis, quos nobis.
             </p>
           </TextDiv>
         </UpperDesc>
@@ -173,6 +158,7 @@ const ImgDiv = styled.div`
     img {
       width: 100%;
       height: 100%;
+      object-fit: cover;
     }
   }
   @media (max-width: 1500px) {
